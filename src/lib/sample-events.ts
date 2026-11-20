@@ -4,7 +4,7 @@ export type TicketTier = {
   id: string;
   name: string;
   note: string;
-  price: number; // in naira; 0 = free
+  price: number | null; // in naira; 0 = free, null = not set yet (placeholder)
   soldOut?: boolean;
 };
 
@@ -28,11 +28,11 @@ export type EventItem = {
 
 // The ticket types the feature document lists: free, regular, VIP, premium, early-bird.
 const SAMPLE_TIERS: TicketTier[] = [
-  { id: "early", name: "Early bird", note: "Limited launch price", price: 0, soldOut: true },
+  { id: "early", name: "Early bird", note: "Limited launch price", price: null, soldOut: true },
   { id: "free", name: "Free", note: "[Who qualifies]", price: 0 },
-  { id: "regular", name: "Regular", note: "[What's included]", price: 0 },
-  { id: "vip", name: "VIP", note: "[What's included]", price: 0 },
-  { id: "premium", name: "Premium", note: "[What's included]", price: 0 },
+  { id: "regular", name: "Regular", note: "[What's included]", price: null },
+  { id: "vip", name: "VIP", note: "[What's included]", price: null },
+  { id: "premium", name: "Premium", note: "[What's included]", price: null },
 ];
 
 function sampleEvent(id: string, overrides: Partial<EventItem>): EventItem {
@@ -68,12 +68,16 @@ export function findEvent(id: string): EventItem {
   return sampleEvents.find((event) => event.id === id) ?? sampleEvents[0];
 }
 
-export function formatNaira(amount: number): string {
+export function formatNaira(amount: number | null): string {
+  if (amount === null) return "₦[price]";
   return amount === 0 ? "Free" : `₦${amount.toLocaleString("en-NG")}`;
 }
 
-/** Cheapest ticket that isn't sold out, e.g. "From ₦3,000". */
+/** Cheapest paid ticket that isn't sold out, e.g. "₦3,000". */
 export function lowestPrice(event: EventItem): string {
-  const prices = event.tiers.filter((t) => !t.soldOut).map((t) => t.price);
-  return prices.length ? formatNaira(Math.min(...prices)) : "Sold out";
+  const available = event.tiers.filter((t) => !t.soldOut);
+  if (available.length === 0) return "Sold out";
+  const paid = available.map((t) => t.price).filter((p): p is number => p !== null && p > 0);
+  if (paid.length > 0) return formatNaira(Math.min(...paid));
+  return available.some((t) => t.price === null) ? formatNaira(null) : "Free";
 }
