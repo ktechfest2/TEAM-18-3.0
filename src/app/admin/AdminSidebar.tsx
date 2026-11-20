@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
+import { routes } from "@/lib/routes";
 import { ADMIN_NAV } from "@/lib/sample-admin";
 import styles from "./admin.module.css";
 
@@ -23,6 +25,12 @@ export function AdminNavLinks() {
           )}
         </a>
       ))}
+
+      {/* Way back to the citizen app (the installed app has no address bar) */}
+      <Link href={routes.profile} className={styles.navLink} style={{ marginTop: 12, borderTop: "1px solid rgba(255,255,255,0.12)", borderRadius: 0, paddingTop: 12 }}>
+        <Icon name="back" size="s" />
+        <span style={{ flex: 1 }}>Back to app</span>
+      </Link>
     </nav>
   );
 }

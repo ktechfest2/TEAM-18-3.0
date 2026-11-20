@@ -24,6 +24,9 @@ const MENU: { href: string; icon: IconName; title: string; detail?: string; tone
   { href: "#", icon: "help", title: "Help & support", tone: "t-n" }, // TODO: help centre
 ];
 
+// TODO: once accounts exist, show this only to staff with an admin/moderator role.
+const SHOW_ADMIN_LINK = true;
+
 // Screen 29 · Profile
 export default function ProfilePage() {
   const profile = sampleProfile;
@@ -92,6 +95,19 @@ export default function ProfilePage() {
             </Link>
           ))}
         </nav>
+
+        {SHOW_ADMIN_LINK && (
+          <Link className="card row" href={routes.admin} style={{ padding: "12px 14px", textDecoration: "none", color: "var(--ink)" }}>
+            <span className="tile" style={{ width: 38, height: 38, background: "var(--ink)", color: "var(--amber)" }}>
+              <Icon name="shield" size="s" />
+            </span>
+            <span className="grow">
+              <span className="h3" style={{ display: "block", fontSize: 14 }}>Admin console</span>
+              <span className="sm">Moderation and platform management (staff only)</span>
+            </span>
+            <Icon name="chevronRight" size="s" style={{ color: "var(--muted)" }} />
+          </Link>
+        )}
       </main>
     </>
   );
