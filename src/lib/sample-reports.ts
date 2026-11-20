@@ -16,6 +16,25 @@ export const sampleLatestReport = {
   ] satisfies TimelineStep[],
 };
 
+export const sampleIncident = {
+  id: "INC-[0000]",
+  category: "[Category]",
+  title: "[Short incident title]",
+  meta: "PU [000] · [Polling unit name] · Today [time] · [0] photo",
+  timeline: [
+    { title: "Submitted anonymously", detail: "[time]", state: "done" },
+    { title: "Moderator review", detail: "[0] other reports at this PU describe the same incident.", state: "current" },
+    { title: "Evidence check", detail: "", state: "pending" },
+    { title: "Public alert, if confirmed", detail: "Labelled so readers know it's citizen-reported", state: "pending" },
+  ] satisfies TimelineStep[],
+};
+
+export const sampleNearbyAlert = {
+  id: "alert-1",
+  title: "[Verified incident headline]",
+  meta: "[Source] · [time ago]",
+};
+
 export const sampleEarlierReports: {
   id: string;
   kind: ReportKind;
