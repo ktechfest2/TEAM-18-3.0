@@ -6,6 +6,19 @@ export const sampleUser = {
   area: "[Ward], [State]",
 };
 
+export const sampleElection = {
+  name: "[Election name]",
+  pollsClose: "[closing time]",
+};
+
+export const sampleMyPollingUnit = {
+  state: "[State]",
+  lga: "[LGA]",
+  ward: "[Ward]",
+  name: "PU [000] · [Polling unit name]",
+  code: "[PU code]",
+};
+
 export const sampleDashboard = {
   electionBadge: "LIVE · Election day",
   pollsClose: "Polls close [time]",
