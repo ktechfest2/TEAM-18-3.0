@@ -80,6 +80,7 @@ const PATHS = {
   sliders: <path d="M4 6h16M7 12h10M10 18h4" />,
   bookmark: <path d="M6 3h12v18l-6-4-6 4z" />,
   minus: <path d="M5 12h14" />,
+  scan: <path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4M7 12h10" />,
   ticket: <path d="M3 7h18v3a2 2 0 0 0 0 4v3H3v-3a2 2 0 0 0 0-4zM14 7v10" />,
   card: (
     <>
