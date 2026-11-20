@@ -56,6 +56,13 @@ const PATHS = {
     </>
   ),
   chevronDown: <path d="m6 9 6 6 6-6" />,
+  camera: (
+    <>
+      <path d="M4 8h3l2-3h6l2 3h3v11H4z" />
+      <circle cx="12" cy="13" r="3.5" />
+    </>
+  ),
+  upload: <path d="M12 16V4M7 9l5-5 5 5M4 20h16" />,
   lock: (
     <>
       <rect x="5" y="11" width="14" height="10" rx="2" />
