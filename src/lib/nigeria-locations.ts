@@ -1,9 +1,11 @@
 // Nigerian electoral locations: State → LGA / Area Council → Ward → Polling unit.
 //
-// The 36 states + FCT list is complete. Everything below state level is a
-// PARTIAL SAMPLE taken from the EYENEC design canvas (FCT → Bwari → Kubwa) and
-// must be checked against INEC's official polling-unit directory, then replaced
-// by data loaded from the backend.
+// States (36 + FCT) and all 774 LGAs are complete (see nigeria-lgas.ts).
+// Wards and polling units are a PARTIAL SAMPLE from the EYENEC design canvas
+// (FCT → Bwari → Kubwa only). Real ward and polling-unit lists must come from
+// INEC's official directory, loaded from the backend.
+
+import { LGAS_BY_STATE } from "./nigeria-lgas";
 
 export const NIGERIAN_STATES = [
   "Abia", "Adamawa", "Akwa Ibom", "Anambra", "Bauchi", "Bayelsa", "Benue", "Borno",
@@ -15,16 +17,14 @@ export const NIGERIAN_STATES = [
 
 export type Place = { code: string; name: string };
 
-/** LGAs / Area Councils per state. Only FCT is filled in so far. */
-const LGAS_BY_STATE: Record<string, Place[]> = {
-  FCT: [
-    { code: "01", name: "Abaji" },
-    { code: "02", name: "Bwari" },
-    { code: "03", name: "Gwagwalada" },
-    { code: "04", name: "Kuje" },
-    { code: "05", name: "Kwali" },
-    { code: "06", name: "Abuja Municipal (AMAC)" },
-  ],
+/** INEC 2-digit codes we already know (from the design canvas). Others are blank until the backend provides them. */
+const KNOWN_LGA_CODES: Record<string, string> = {
+  "FCT/Abaji": "01",
+  "FCT/Bwari": "02",
+  "FCT/Gwagwalada": "03",
+  "FCT/Kuje": "04",
+  "FCT/Kwali": "05",
+  "FCT/Abuja Municipal (AMAC)": "06",
 };
 
 /** Wards per LGA, keyed "State/LGA name". Only Bwari is filled in so far. */
@@ -49,7 +49,7 @@ const UNITS_BY_WARD: Record<string, Place[]> = {
 };
 
 export function lgasFor(state: string): Place[] {
-  return LGAS_BY_STATE[state] ?? [];
+  return (LGAS_BY_STATE[state] ?? []).map((name) => ({ name, code: KNOWN_LGA_CODES[`${state}/${name}`] ?? "" }));
 }
 
 export function wardsFor(state: string, lga: string): Place[] {

@@ -124,8 +124,7 @@ export function LocationForm() {
               setUnitCode("");
             }}
           />
-          <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-            <SelectField
+          <SelectField
               id="lga"
               label={t("location.lga")}
               options={lgas.map((l) => l.name)}
@@ -137,22 +136,27 @@ export function LocationForm() {
                 setUnitCode("");
               }}
             />
-          </div>
         </div>
-        {noDataHint(lgas, state)}
 
-        <SelectField
-          id="ward"
-          label={t("location.ward")}
-          options={wards.map((w) => w.name)}
-          placeholder={t("location.select")}
-          value={ward}
-          onChange={(value) => {
-            setWard(value);
-            setUnitCode("");
-          }}
-        />
-        {noDataHint(wards, lga)}
+        {lga && wards.length === 0 ? (
+          // No ward list for this LGA yet — let the user type it.
+          <div className="field">
+            <label htmlFor="ward">{t("location.ward")}</label>
+            <input className="inp" id="ward" value={ward} onChange={(e) => setWard(e.target.value)} style={{ height: 44 }} />
+          </div>
+        ) : (
+          <SelectField
+            id="ward"
+            label={t("location.ward")}
+            options={wards.map((w) => w.name)}
+            placeholder={lga ? t("location.select") : t("verify.pickStateFirst")}
+            value={ward}
+            onChange={(value) => {
+              setWard(value);
+              setUnitCode("");
+            }}
+          />
+        )}
 
         {units.length > 0 && (
           <>
