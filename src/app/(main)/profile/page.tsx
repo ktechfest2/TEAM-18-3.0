@@ -20,6 +20,7 @@ const MENU: { href: string; icon: IconName; title: string; detail?: string; tone
   { href: routes.myReports, icon: "document", title: "My reports", detail: "[0] this election" },
   { href: routes.events.ticket("sample-1-ticket"), icon: "ticket", title: "My tickets", detail: "[0] upcoming" },
   { href: routes.plans, icon: "card", title: "Payment history", detail: "Last paid [date]" },
+  { href: routes.ussd, icon: "phone", title: "Basic phone (USSD)", detail: "Use EYENEC without data", tone: "t-n" },
   { href: "#", icon: "help", title: "Help & support", tone: "t-n" }, // TODO: help centre
 ];
 

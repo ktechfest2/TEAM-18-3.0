@@ -42,6 +42,7 @@ export const routes = {
   profile: "/profile", //                        29
   settings: "/settings", //                      30
   plans: "/plans", //                            31
+  ussd: "/ussd", //                              32 (preview of the basic-phone menu)
   admin: "/admin", //                            33 / 34
   offline: "/offline",
 } as const;

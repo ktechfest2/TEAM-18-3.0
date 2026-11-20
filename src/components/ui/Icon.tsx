@@ -80,6 +80,15 @@ const PATHS = {
   sliders: <path d="M4 6h16M7 12h10M10 18h4" />,
   bookmark: <path d="M6 3h12v18l-6-4-6 4z" />,
   minus: <path d="M5 12h14" />,
+  arrowDown: <path d="M12 5v14M6 13l6 6 6-6" />,
+  menu: <path d="M4 6h16M4 12h16M4 18h16" />,
+  more: (
+    <>
+      <circle cx="5" cy="12" r="1.5" />
+      <circle cx="12" cy="12" r="1.5" />
+      <circle cx="19" cy="12" r="1.5" />
+    </>
+  ),
   scan: <path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4M7 12h10" />,
   settings: (
     <>
