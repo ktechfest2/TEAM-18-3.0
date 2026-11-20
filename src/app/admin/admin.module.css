@@ -48,6 +48,12 @@
   flex-direction: column;
   gap: 20px;
 }
+.desktopHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
 .statGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));

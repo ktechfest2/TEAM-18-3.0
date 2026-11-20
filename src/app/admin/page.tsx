@@ -23,7 +23,7 @@ export default function AdminPage() {
       <AdminMobileChrome />
 
       <main className={styles.main}>
-        <header className={styles.desktopHeader} style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 16 }}>
+        <header className={styles.desktopHeader}>
           <div style={{ flex: "1 1 260px" }}>
             <p className="lbl">[Election name] · Election day</p>
             <h1 style={{ margin: 0, fontSize: 28, fontWeight: 800, letterSpacing: "-0.02em" }}>Moderation overview</h1>
