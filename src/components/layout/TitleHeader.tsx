@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
 
 type TitleHeaderProps = {
-  title: string;
+  title: React.ReactNode;
   backHref?: string;
   /** Anything shown on the right, e.g. "1 of 2" or an icon button. */
   right?: React.ReactNode;

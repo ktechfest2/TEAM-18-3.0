@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { OfflineBanner } from "@/components/pwa/OfflineBanner";
+import { LanguageSync } from "@/i18n";
 import { ServiceWorkerRegister } from "@/components/pwa/ServiceWorkerRegister";
 import "./globals.css";
 
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <OfflineBanner />
         {children}
         <ServiceWorkerRegister />
+        <LanguageSync />
       </body>
     </html>
   );

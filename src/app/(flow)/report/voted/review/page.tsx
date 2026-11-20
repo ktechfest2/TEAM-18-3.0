@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { StepHeader } from "@/components/layout/StepHeader";
 import { Icon } from "@/components/ui/Icon";
+import { T } from "@/i18n";
 import { routes } from "@/lib/routes";
 import { myPollingUnit as pu } from "@/components/profile/my-polling-unit";
 import { sampleElection } from "@/lib/sample-data";
@@ -9,12 +10,12 @@ import { sampleElection } from "@/lib/sample-data";
 export const metadata: Metadata = { title: "Review and submit" };
 
 const DETAILS = [
-  { label: "Election", value: sampleElection.name },
-  { label: "State", value: pu.state },
-  { label: "LGA", value: pu.lga },
-  { label: "Ward", value: pu.ward },
-  { label: "Polling unit", value: pu.name },
-  { label: "Time", value: "[time], today" },
+  { label: <T k="votedReview.election" />, value: sampleElection.name },
+  { label: <T k="location.state" />, value: pu.state },
+  { label: <T k="location.lga" />, value: pu.lga },
+  { label: <T k="location.ward" />, value: pu.ward },
+  { label: <T k="location.pollingUnit" />, value: pu.name },
+  { label: <T k="votedReview.time" />, value: "[time]" },
 ];
 
 // Screen 11 · Review & submit
@@ -26,8 +27,8 @@ export default function VoteReviewPage() {
 
       <main className="content" style={{ gap: 16 }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 6, paddingTop: 4 }}>
-          <h1 className="h1">Review your report</h1>
-          <p className="body">Check the details below. You can submit one participation report per election.</p>
+          <h1 className="h1"><T k="votedReview.title" /></h1>
+          <p className="body"><T k="votedReview.body" /></p>
         </div>
 
         <div className="card" style={{ padding: 0, overflow: "hidden" }}>
@@ -36,15 +37,15 @@ export default function VoteReviewPage() {
               <Icon name="check" />
             </span>
             <span>
-              <span className="lbl" style={{ color: "var(--green-d)" }}>Participation</span>
+              <span className="lbl" style={{ color: "var(--green-d)" }}><T k="votedReview.participation" /></span>
               <span style={{ display: "block", fontSize: 18, fontWeight: 800, color: "var(--green-d)" }}>
-                Yes, I voted
+                <T k="voted.yes" />
               </span>
             </span>
           </div>
           <div style={{ padding: "4px 16px" }}>
-            {DETAILS.map((row) => (
-              <div key={row.label} className="li">
+            {DETAILS.map((row, index) => (
+              <div key={index} className="li">
                 <span className="sm grow">{row.label}</span>
                 <span className="h3" style={{ fontSize: 14, textAlign: "right" }}>{row.value}</span>
               </div>
@@ -55,18 +56,17 @@ export default function VoteReviewPage() {
         <div className="priv">
           <Icon name="lock" size="s" />
           <span>
-            Your name and VIN are stripped before this report is counted. Nobody — including EYENEC staff — can see
-            it came from you.
+            <T k="votedReview.privacy" />
           </span>
         </div>
       </main>
 
       <div className="foot">
         <Link className="btn" href={routes.report.votedDone}>
-          Submit report
+          <T k="votedReview.submit" />
         </Link>
         <Link className="btn ghost" href={routes.report.votedLocation}>
-          Edit details
+          <T k="votedReview.edit" />
         </Link>
       </div>
     </>

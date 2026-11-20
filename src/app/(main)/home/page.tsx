@@ -2,17 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { StatusBadge } from "@/components/ui/StatusBadge";
+import { T, type MessageKey } from "@/i18n";
 import { routes } from "@/lib/routes";
 import { FirstName, ShortArea } from "@/components/profile/ProfileText";
 import { sampleDashboard as stats, sampleUpdates } from "@/lib/sample-data";
 
 export const metadata: Metadata = { title: "Home" };
 
-const QUICK_LINKS: { href: string; label: string; icon: IconName; tone: string }[] = [
-  { href: routes.stats.national, label: "Leaderboard", icon: "stats", tone: "t-g" },
-  { href: routes.myReports, label: "Reports", icon: "document", tone: "t-b" },
-  { href: routes.report.incident, label: "Incident", icon: "alert", tone: "t-r" },
-  { href: routes.events.list, label: "Events", icon: "calendar", tone: "t-a" },
+const QUICK_LINKS: { href: string; label: MessageKey; icon: IconName; tone: string }[] = [
+  { href: routes.stats.national, label: "home.leaderboard", icon: "stats", tone: "t-g" },
+  { href: routes.myReports, label: "home.reports", icon: "document", tone: "t-b" },
+  { href: routes.report.incident, label: "home.incident", icon: "alert", tone: "t-r" },
+  { href: routes.events.list, label: "home.events", icon: "calendar", tone: "t-a" },
 ];
 
 // Screen 07 · Home dashboard
@@ -27,7 +28,7 @@ export default function HomePage() {
           <span style={{ display: "flex", flexDirection: "column" }}>
             <span className="word" style={{ fontSize: 17 }}>EYENEC</span>
             <span className="sm" style={{ fontSize: 11.5 }}>
-              Hi <FirstName /> · <ShortArea />
+              <T k="home.hi" /> <FirstName /> · <ShortArea />
             </span>
           </span>
         </div>
@@ -57,9 +58,9 @@ export default function HomePage() {
             <span style={{ fontSize: 12, color: "#CFE3D8" }}>{stats.pollsClose}</span>
           </div>
           <div>
-            <p style={{ margin: 0, fontSize: 20, fontWeight: 800 }}>Have you voted today?</p>
+            <p style={{ margin: 0, fontSize: 20, fontWeight: 800 }}><T k="home.haveYouVoted" /></p>
             <p style={{ margin: "4px 0 0", fontSize: 13, color: "#CFE3D8" }}>
-              Your report is anonymous and adds to your polling unit&apos;s count.
+              <T k="home.anonymous" />
             </p>
           </div>
           <Link
@@ -67,31 +68,31 @@ export default function HomePage() {
             href={routes.report.voted}
             style={{ background: "#fff", color: "var(--green-d)", height: 46, fontSize: 15 }}
           >
-            Report participation
+            <T k="home.reportParticipation" />
           </Link>
         </section>
 
         {/* Headline numbers */}
         <div className="grid2" style={{ gap: 10 }}>
           <div className="card" style={{ padding: 14 }}>
-            <p className="sm">Participation reports</p>
+            <p className="sm"><T k="home.participationReports" /></p>
             <p className="n">{stats.participationReports}</p>
             <p className="sm" style={{ color: "var(--green)", fontWeight: 700 }}>{stats.participationChange}</p>
           </div>
           <div className="card" style={{ padding: 14 }}>
-            <p className="sm">Polling units reporting</p>
+            <p className="sm"><T k="home.unitsReporting" /></p>
             <p className="n">{stats.pollingUnitsReporting}</p>
             <p className="sm">{stats.pollingUnitsTotal}</p>
           </div>
           <div className="card" style={{ padding: 14 }}>
-            <p className="sm">PUs with verified reports</p>
+            <p className="sm"><T k="home.verifiedUnits" /></p>
             <p className="n">{stats.verifiedUnits}</p>
             <div className="track" style={{ marginTop: 8 }}>
               <div className="fill" style={{ width: `${stats.verifiedPercent}%` }} />
             </div>
           </div>
           <div className="card" style={{ padding: 14 }}>
-            <p className="sm">PUs with official results</p>
+            <p className="sm"><T k="home.officialUnits" /></p>
             <p className="n">{stats.officialUnits}</p>
             <div className="track" style={{ marginTop: 8 }}>
               <div className="fill" style={{ width: `${stats.officialPercent}%`, background: "var(--blue)" }} />
@@ -119,15 +120,15 @@ export default function HomePage() {
               <span className={`tile ${item.tone}`}>
                 <Icon name={item.icon} />
               </span>
-              {item.label}
+              <T k={item.label} />
             </Link>
           ))}
         </nav>
 
         {/* Latest updates */}
         <div className="between">
-          <h2 className="h2" style={{ fontSize: 16 }}>Latest updates</h2>
-          <Link className="link" href={routes.news.list}>See all</Link>
+          <h2 className="h2" style={{ fontSize: 16 }}><T k="home.latestUpdates" /></h2>
+          <Link className="link" href={routes.news.list}><T k="home.seeAll" /></Link>
         </div>
         <div className="card" style={{ padding: "2px 14px" }}>
           {sampleUpdates.map((update) => (

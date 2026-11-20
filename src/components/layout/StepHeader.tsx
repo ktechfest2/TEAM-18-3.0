@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
+import { T } from "@/i18n";
 
 type StepHeaderProps = {
   step: number;
@@ -24,7 +25,7 @@ export function StepHeader({ step, totalSteps, backHref, backIcon = "back" }: St
       </div>
 
       <span className="sm" style={{ fontWeight: 600 }}>
-        {step} of {totalSteps}
+        <T k="common.stepOf" values={{ step, total: totalSteps }} />
       </span>
     </header>
   );

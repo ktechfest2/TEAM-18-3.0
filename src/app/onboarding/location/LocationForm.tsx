@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Icon } from "@/components/ui/Icon";
 import { SelectField } from "@/components/ui/SelectField";
+import { useT } from "@/i18n";
 import { routes } from "@/lib/routes";
 import { sampleLgas, samplePollingUnits, sampleStates, sampleWards } from "@/lib/sample-locations";
 import { saveUserProfile, useUserProfile } from "@/lib/user-profile";
@@ -14,6 +15,7 @@ import { saveUserProfile, useUserProfile } from "@/lib/user-profile";
 export function LocationForm() {
   const router = useRouter();
   const saved = useUserProfile().pollingUnit;
+  const t = useT();
 
   // Start from what was saved before (if anything).
   const [state, setState] = useState(saved.state);
@@ -24,7 +26,7 @@ export function LocationForm() {
 
   function finish() {
     if (!state || !lga || !ward) {
-      setError("Choose your state, LGA and ward.");
+      setError(t("location.error"));
       return;
     }
     const unit = samplePollingUnits.find((u) => u.code === unitCode) ?? samplePollingUnits[0];
@@ -36,25 +38,25 @@ export function LocationForm() {
     <>
       <main className="content" style={{ gap: 14 }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 6, paddingTop: 4 }}>
-          <h1 className="h1">Where do you vote?</h1>
-          <p className="body">Set your registered polling unit. We&apos;ll use it for local stats and alerts.</p>
+          <h1 className="h1">{t("location.title")}</h1>
+          <p className="body">{t("location.body")}</p>
         </div>
 
         <button className="btn ghost" type="button" style={{ height: 48, fontSize: 15 }}>
           <Icon name="pin" size="s" style={{ color: "var(--green)" }} />
-          Use my current location
+          {t("location.useCurrent")}
         </button>
 
-        <SelectField id="state" label="State" options={sampleStates} placeholder="Select state" value={state} onChange={setState} />
-        <SelectField id="lga" label="Local Government Area" options={sampleLgas} placeholder="Select LGA" value={lga} onChange={setLga} />
-        <SelectField id="ward" label="Ward" options={sampleWards} placeholder="Select ward" value={ward} onChange={setWard} />
+        <SelectField id="state" label={t("location.state")} options={sampleStates} placeholder={t("location.select")} value={state} onChange={setState} />
+        <SelectField id="lga" label={t("location.lga")} options={sampleLgas} placeholder={t("location.select")} value={lga} onChange={setLga} />
+        <SelectField id="ward" label={t("location.ward")} options={sampleWards} placeholder={t("location.select")} value={ward} onChange={setWard} />
 
         <div className="field">
-          <label htmlFor="pollingUnitSearch">Polling unit</label>
-          <input className="inp" id="pollingUnitSearch" type="search" placeholder="Search polling unit name or code" />
+          <label htmlFor="pollingUnitSearch">{t("location.pollingUnit")}</label>
+          <input className="inp" id="pollingUnitSearch" type="search" placeholder={t("location.searchPlaceholder")} />
         </div>
 
-        <div className="card" role="radiogroup" aria-label="Polling unit" style={{ padding: "6px 14px" }}>
+        <div className="card" role="radiogroup" aria-label={t("location.pollingUnit")} style={{ padding: "6px 14px" }}>
           {samplePollingUnits.map((unit) => {
             const isSelected = unit.code === unitCode;
             return (
@@ -78,7 +80,7 @@ export function LocationForm() {
 
       <div className="foot">
         <button className="btn" type="button" onClick={finish}>
-          Finish setup
+          {t("location.finish")}
         </button>
       </div>
     </>

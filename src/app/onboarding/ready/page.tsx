@@ -1,20 +1,28 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FirstName, FullArea, LanguageName, MaskedPhone, PollingUnitName } from "@/components/profile/ProfileText";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { StatusBadge } from "@/components/ui/StatusBadge";
-import type { ReportStatus } from "@/lib/sample-data";
-import { FirstName, FullArea, LanguageName, MaskedPhone, PollingUnitName } from "@/components/profile/ProfileText";
+import { T, type MessageKey } from "@/i18n";
 import { routes } from "@/lib/routes";
+import type { ReportStatus } from "@/lib/sample-data";
 
 export const metadata: Metadata = { title: "Account status" };
 
 // Account summary. Details come from what the user saved during onboarding;
 // the statuses are PLACEHOLDERS until the backend confirms them.
-const ACCOUNT_ITEMS: { icon: IconName; tone: string; title: string; detail: React.ReactNode; status: ReportStatus; statusLabel?: string }[] = [
-  { icon: "phone", tone: "t-g", title: "Phone number", detail: <MaskedPhone />, status: "verified" },
-  { icon: "shield", tone: "t-a", title: "Voter eligibility", detail: "Usually under 24 hours", status: "review" },
-  { icon: "pin", tone: "t-n", title: "Polling unit", detail: <><PollingUnitName /> · <FullArea /></>, status: "submitted", statusLabel: "Saved" },
-  { icon: "globe", tone: "t-n", title: "Language", detail: <LanguageName />, status: "submitted", statusLabel: "Saved" },
+const ACCOUNT_ITEMS: {
+  icon: IconName;
+  tone: string;
+  title: MessageKey;
+  detail: React.ReactNode;
+  status: ReportStatus;
+  statusLabel?: MessageKey;
+}[] = [
+  { icon: "phone", tone: "t-g", title: "ready.phone", detail: <MaskedPhone />, status: "verified" },
+  { icon: "shield", tone: "t-a", title: "ready.eligibility", detail: <T k="ready.eligibilityTime" />, status: "review" },
+  { icon: "pin", tone: "t-n", title: "ready.pollingUnit", detail: <><PollingUnitName /> · <FullArea /></>, status: "submitted", statusLabel: "status.saved" },
+  { icon: "globe", tone: "t-n", title: "ready.language", detail: <LanguageName />, status: "submitted", statusLabel: "status.saved" },
 ];
 
 // Screen 06 · Account status
@@ -38,10 +46,10 @@ export default function ReadyPage() {
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          <h1 className="h1">You&apos;re in, <FirstName /></h1>
-          <p className="body">
-            Your account is active. Voter eligibility is being confirmed — you can use EYENEC while we check.
-          </p>
+          <h1 className="h1">
+            <T k="ready.youreIn" /> <FirstName />
+          </h1>
+          <p className="body"><T k="ready.body" /></p>
         </div>
 
         <div className="card" style={{ padding: "4px 16px" }}>
@@ -51,25 +59,23 @@ export default function ReadyPage() {
                 <Icon name={item.icon} size="s" />
               </span>
               <span className="grow">
-                <span className="h3" style={{ display: "block" }}>{item.title}</span>
+                <span className="h3" style={{ display: "block" }}><T k={item.title} /></span>
                 <span className="sm">{item.detail}</span>
               </span>
-              <StatusBadge status={item.status} label={item.statusLabel} />
+              <StatusBadge status={item.status} label={item.statusLabel && <T k={item.statusLabel} />} />
             </div>
           ))}
         </div>
 
         <div className="warn">
           <Icon name="info" size="s" />
-          <span>
-            Until eligibility is confirmed, your participation reports are counted as <strong>unverified</strong>.
-          </span>
+          <span><T k="ready.unverifiedNote" /></span>
         </div>
       </main>
 
       <div className="foot">
         <Link className="btn" href={routes.home}>
-          Go to dashboard
+          <T k="ready.goToDashboard" />
         </Link>
       </div>
     </>

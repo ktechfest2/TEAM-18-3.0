@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
+import { T } from "@/i18n";
 import { routes } from "@/lib/routes";
 
 // Shown for any URL that has no page yet. While screens are being built,
@@ -11,10 +12,10 @@ export default function NotFound() {
         <span className="tile t-a" style={{ width: 64, height: 64, borderRadius: 18 }}>
           <Icon name="clock" size="l" />
         </span>
-        <h1 className="h1">This screen is coming soon</h1>
-        <p className="body">It&apos;s in the designs but hasn&apos;t been built yet.</p>
+        <h1 className="h1"><T k="notFound.title" /></h1>
+        <p className="body"><T k="notFound.body" /></p>
         <Link className="btn" href={routes.home}>
-          Back to home
+          <T k="common.backToHome" />
         </Link>
       </div>
     </main>

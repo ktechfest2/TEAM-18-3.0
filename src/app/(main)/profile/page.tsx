@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FullArea, FullName, Initials, LanguageName, MaskedPhone, PollingUnitName } from "@/components/profile/ProfileText";
 import { Icon, type IconName } from "@/components/ui/Icon";
+import { T, type MessageKey } from "@/i18n";
 import { routes } from "@/lib/routes";
 
 export const metadata: Metadata = { title: "Profile" };
@@ -13,14 +14,14 @@ const sampleProfile = {
   renews: "Renews [date]",
 };
 
-const MENU: { href: string; icon: IconName; title: string; detail?: React.ReactNode; tone?: string }[] = [
-  { href: routes.onboarding.location, icon: "pin", title: "Registered location", detail: <><PollingUnitName /> · <FullArea /></> },
-  { href: routes.settings, icon: "globe", title: "Language", detail: <LanguageName /> },
-  { href: routes.myReports, icon: "document", title: "My reports", detail: "[0] this election" },
-  { href: routes.events.ticket("sample-1-ticket"), icon: "ticket", title: "My tickets", detail: "[0] upcoming" },
-  { href: routes.plans, icon: "card", title: "Payment history", detail: "Last paid [date]" },
-  { href: routes.ussd, icon: "phone", title: "Basic phone (USSD)", detail: "Use EYENEC without data", tone: "t-n" },
-  { href: "#", icon: "help", title: "Help & support", tone: "t-n" }, // TODO: help centre
+const MENU: { href: string; icon: IconName; title: MessageKey; detail?: React.ReactNode; tone?: string }[] = [
+  { href: routes.onboarding.location, icon: "pin", title: "profile.location", detail: <><PollingUnitName /> · <FullArea /></> },
+  { href: routes.settings, icon: "globe", title: "profile.language", detail: <LanguageName /> },
+  { href: routes.myReports, icon: "document", title: "profile.myReports", detail: "[0]" },
+  { href: routes.events.ticket("sample-1-ticket"), icon: "ticket", title: "profile.myTickets", detail: "[0]" },
+  { href: routes.plans, icon: "card", title: "profile.payments", detail: "[date]" },
+  { href: routes.ussd, icon: "phone", title: "profile.ussd", detail: <T k="profile.ussdHint" />, tone: "t-n" },
+  { href: "#", icon: "help", title: "profile.help", tone: "t-n" }, // TODO: help centre
 ];
 
 // TODO: once accounts exist, show this only to staff with an admin/moderator role.
@@ -33,7 +34,7 @@ export default function ProfilePage() {
   return (
     <>
       <header className="top">
-        <h1 className="t-title" style={{ fontSize: 20 }}>Profile</h1>
+        <h1 className="t-title" style={{ fontSize: 20 }}><T k="profile.title" /></h1>
         <Link className="ibtn" href={routes.settings} aria-label="Settings">
           <Icon name="settings" />
         </Link>
@@ -63,20 +64,20 @@ export default function ProfilePage() {
             <span className="h2"><FullName /></span>
             <span className="sm"><MaskedPhone /></span>
             <span className="row" style={{ gap: 6, flexWrap: "wrap" }}>
-              <span className="badge b-ver">Phone verified</span>
-              <span className="badge b-rev">Voter check pending</span>
+              <span className="badge b-ver"><T k="profile.phoneVerified" /></span>
+              <span className="badge b-rev"><T k="profile.voterPending" /></span>
             </span>
           </span>
         </section>
 
         <section className="card row" style={{ background: "var(--ink)", borderColor: "var(--ink)", color: "#fff" }}>
           <span className="grow">
-            <span className="lbl" style={{ color: "#A9B8AF" }}>Your plan</span>
+            <span className="lbl" style={{ color: "#A9B8AF" }}><T k="profile.yourPlan" /></span>
             <span style={{ display: "block", fontSize: 18, fontWeight: 800 }}>{profile.plan}</span>
             <span style={{ fontSize: 12.5, color: "#C8D3CC" }}>{profile.renews}</span>
           </span>
           <Link className="btn sm" href={routes.plans} style={{ background: "var(--amber)", color: "var(--ink)" }}>
-            Manage
+            <T k="profile.manage" />
           </Link>
         </section>
 
@@ -87,7 +88,7 @@ export default function ProfilePage() {
                 <Icon name={item.icon} size="s" />
               </span>
               <span className="grow">
-                <span className="h3" style={{ display: "block", fontSize: 14 }}>{item.title}</span>
+                <span className="h3" style={{ display: "block", fontSize: 14 }}><T k={item.title} /></span>
                 {item.detail && <span className="sm">{item.detail}</span>}
               </span>
               <Icon name="chevronRight" size="s" style={{ color: "var(--muted)" }} />
@@ -101,8 +102,8 @@ export default function ProfilePage() {
               <Icon name="shield" size="s" />
             </span>
             <span className="grow">
-              <span className="h3" style={{ display: "block", fontSize: 14 }}>Admin console</span>
-              <span className="sm">Moderation and platform management (staff only)</span>
+              <span className="h3" style={{ display: "block", fontSize: 14 }}><T k="profile.admin" /></span>
+              <span className="sm"><T k="profile.adminHint" /></span>
             </span>
             <Icon name="chevronRight" size="s" style={{ color: "var(--muted)" }} />
           </Link>

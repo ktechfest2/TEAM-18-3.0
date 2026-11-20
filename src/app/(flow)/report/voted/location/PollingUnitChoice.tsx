@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { RadioCards } from "@/components/ui/RadioCards";
+import { useT } from "@/i18n";
 import { useUserProfile } from "@/lib/user-profile";
 
 type Choice = "registered" | "other";
@@ -10,15 +11,16 @@ type Choice = "registered" | "other";
 export function PollingUnitChoice() {
   const [choice, setChoice] = useState<Choice>("registered");
   const { pollingUnit } = useUserProfile();
+  const t = useT();
 
   return (
     <RadioCards
-      label="Polling unit"
+      label={t("location.pollingUnit")}
       value={choice}
       onChange={setChoice}
       options={[
-        { value: "registered", title: "My registered polling unit", hint: pollingUnit.unitName || "Not set yet — add it in Profile" },
-        { value: "other", title: "A different polling unit", hint: "Choose state, LGA, ward and unit" },
+        { value: "registered", title: t("votedLocation.registered"), hint: pollingUnit.unitName || t("votedLocation.notSet") },
+        { value: "other", title: t("votedLocation.other"), hint: t("votedLocation.otherHint") },
       ]}
     />
   );

@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { SelectField } from "@/components/ui/SelectField";
+import { useT } from "@/i18n";
 import { routes } from "@/lib/routes";
 import { saveUserProfile, useUserProfile } from "@/lib/user-profile";
 
@@ -11,6 +12,7 @@ import { saveUserProfile, useUserProfile } from "@/lib/user-profile";
 export function RegisterForm() {
   const router = useRouter();
   const saved = useUserProfile();
+  const t = useT();
   const [error, setError] = useState("");
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -20,11 +22,11 @@ export function RegisterForm() {
     const phone = String(form.get("phone") ?? "").trim();
 
     if (!fullName || phone.replace(/\D/g, "").length < 10) {
-      setError("Enter your full name and a valid phone number.");
+      setError(t("register.errorDetails"));
       return;
     }
     if (!form.get("acceptTerms")) {
-      setError("Please accept the Terms and Privacy Policy to continue.");
+      setError(t("register.errorTerms"));
       return;
     }
 
@@ -36,18 +38,18 @@ export function RegisterForm() {
     <form onSubmit={handleSubmit} noValidate style={{ display: "contents" }}>
       <main className="content" style={{ gap: 14 }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 6, paddingTop: 4 }}>
-          <h1 className="h1">Create your account</h1>
-          <p className="body">Use the details on your voter&apos;s card so we can confirm your eligibility.</p>
+          <h1 className="h1">{t("register.title")}</h1>
+          <p className="body">{t("register.body")}</p>
         </div>
 
         <div className="field">
-          <label htmlFor="fullName">Full name</label>
+          <label htmlFor="fullName">{t("register.fullName")}</label>
           <input
             className="inp"
             id="fullName"
             name="fullName"
             autoComplete="name"
-            placeholder="As on your voter's card"
+            placeholder={t("register.fullNamePlaceholder")}
             defaultValue={saved.fullName}
             key={`name-${saved.fullName}`}
             required
@@ -55,7 +57,7 @@ export function RegisterForm() {
         </div>
 
         <div className="field">
-          <label htmlFor="phone">Phone number</label>
+          <label htmlFor="phone">{t("register.phone")}</label>
           <div style={{ display: "flex", gap: 8 }}>
             <span className="inp" style={{ width: 84, display: "flex", alignItems: "center", fontWeight: 600 }}>+234</span>
             <input
@@ -76,30 +78,36 @@ export function RegisterForm() {
 
         <div className="field">
           <label htmlFor="email">
-            Email <span style={{ color: "var(--muted)", fontWeight: 500 }}>(optional)</span>
+            {t("register.email")} <span style={{ color: "var(--muted)", fontWeight: 500 }}>{t("common.optional")}</span>
           </label>
           <input className="inp" id="email" name="email" type="email" autoComplete="email" placeholder="you@example.com" />
         </div>
 
         <div className="grid2">
           <div className="field">
-            <label htmlFor="dob">Date of birth</label>
+            <label htmlFor="dob">{t("register.dateOfBirth")}</label>
             <input className="inp" id="dob" name="dob" type="date" autoComplete="bday" />
           </div>
-          <SelectField id="gender" label="Gender" options={["Female", "Male", "Prefer not to say"]} />
+          <SelectField
+            id="gender"
+            label={t("register.gender")}
+            placeholder={t("location.select")}
+            options={[t("register.genderFemale"), t("register.genderMale"), t("register.genderNoSay")]}
+          />
         </div>
 
         <div className="field">
-          <label htmlFor="password">Create password</label>
-          <input className="inp" id="password" name="password" type="password" autoComplete="new-password" placeholder="At least 8 characters" />
+          <label htmlFor="password">{t("register.password")}</label>
+          <input className="inp" id="password" name="password" type="password" autoComplete="new-password" placeholder={t("register.passwordPlaceholder")} />
         </div>
 
         <label style={{ display: "flex", gap: 10, alignItems: "flex-start", fontSize: 13, lineHeight: 1.45, color: "var(--muted)" }}>
           <input type="checkbox" name="acceptTerms" style={{ width: 20, height: 20, margin: 0, accentColor: "var(--green)", flexShrink: 0 }} />
           <span>
             {/* TODO: real Terms and Privacy Policy pages */}
-            I agree to the <a href="#" style={{ fontWeight: 700 }}>Terms</a> and{" "}
-            <a href="#" style={{ fontWeight: 700 }}>Privacy Policy</a>. My identity will never be linked to how I vote.
+            {t("register.agree")}{" "}
+            <a href="#" style={{ fontWeight: 700 }}>{t("register.terms")}</a> ·{" "}
+            <a href="#" style={{ fontWeight: 700 }}>{t("register.privacy")}</a>
           </span>
         </label>
 
@@ -112,7 +120,7 @@ export function RegisterForm() {
 
       <div className="foot">
         <button className="btn" type="submit">
-          Send verification code
+          {t("register.submit")}
         </button>
       </div>
     </form>

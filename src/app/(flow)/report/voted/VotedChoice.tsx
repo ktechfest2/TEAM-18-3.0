@@ -3,19 +3,21 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Icon, type IconName } from "@/components/ui/Icon";
+import { useT, type MessageKey } from "@/i18n";
 import { routes } from "@/lib/routes";
 import { sampleElection } from "@/lib/sample-data";
 
 type Answer = "yes" | "no";
 
-const OPTIONS: { value: Answer; title: string; hint: string; icon: IconName; tone: string }[] = [
-  { value: "yes", title: "Yes, I voted", hint: "Next, confirm your polling unit", icon: "check", tone: "t-g" },
-  { value: "no", title: "No, not yet", hint: "We'll help you find your polling unit", icon: "close", tone: "t-n" },
+const OPTIONS: { value: Answer; title: MessageKey; hint: MessageKey; icon: IconName; tone: string }[] = [
+  { value: "yes", title: "voted.yes", hint: "voted.yesHint", icon: "check", tone: "t-g" },
+  { value: "no", title: "voted.no", hint: "voted.noHint", icon: "close", tone: "t-n" },
 ];
 
 // Body of screen 09. "Yes" continues the report; "No" shows a reminder instead.
 export function VotedChoice() {
   const [answer, setAnswer] = useState<Answer>("yes");
+  const t = useT();
 
   return (
     <>
@@ -25,11 +27,11 @@ export function VotedChoice() {
             <Icon name="calendar" size="s" style={{ width: 16, height: 16 }} />
             {sampleElection.name}
           </span>
-          <h1 className="h1" style={{ fontSize: 30 }}>Have you voted in this election?</h1>
-          <p className="body">We only record that you took part — never who you voted for.</p>
+          <h1 className="h1" style={{ fontSize: 30 }}>{t("voted.title")}</h1>
+          <p className="body">{t("voted.body")}</p>
         </div>
 
-        <div role="radiogroup" aria-label="Have you voted?" style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        <div role="radiogroup" aria-label={t("voted.title")} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           {OPTIONS.map((option) => {
             const isSelected = option.value === answer;
             return (
@@ -46,8 +48,8 @@ export function VotedChoice() {
                   <Icon name={option.icon} />
                 </span>
                 <span className="grow" style={{ display: "flex", flexDirection: "column", gap: 2 }}>
-                  <span style={{ fontSize: 18, fontWeight: 800 }}>{option.title}</span>
-                  <span className="sm">{option.hint}</span>
+                  <span style={{ fontSize: 18, fontWeight: 800 }}>{t(option.title)}</span>
+                  <span className="sm">{t(option.hint)}</span>
                 </span>
                 <span className="radio" />
               </button>
@@ -57,12 +59,12 @@ export function VotedChoice() {
 
         {answer === "no" && (
           <div className="card" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-            <p className="h3">There&apos;s still time</p>
+            <p className="h3">{t("voted.stillTime")}</p>
             <p className="body">
-              Polls close at {sampleElection.pollsClose}. If you&apos;re in the queue by then, you can still vote.
+              {t("voted.stillTimeBody", { time: sampleElection.pollsClose })}
             </p>
             <Link className="link" href={routes.profile}>
-              See my polling unit →
+              {t("voted.seeMyUnit")}
             </Link>
           </div>
         )}
@@ -70,8 +72,7 @@ export function VotedChoice() {
         <div className="priv" style={{ marginTop: "auto" }}>
           <Icon name="shieldCheck" size="s" />
           <span>
-            Participation reports are counted anonymously in aggregated statistics. They are not votes and are never
-            treated as results.
+            {t("voted.privacy")}
           </span>
         </div>
       </main>
@@ -79,11 +80,11 @@ export function VotedChoice() {
       <div className="foot">
         {answer === "yes" ? (
           <Link className="btn" href={routes.report.votedLocation}>
-            Continue
+            {t("common.continue")}
           </Link>
         ) : (
           <Link className="btn ghost" href={routes.home}>
-            Back to home
+            {t("common.backToHome")}
           </Link>
         )}
       </div>

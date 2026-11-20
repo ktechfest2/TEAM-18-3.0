@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { StepHeader } from "@/components/layout/StepHeader";
+import { T } from "@/i18n";
 import { routes } from "@/lib/routes";
 import { LanguagePicker } from "./LanguagePicker";
 
@@ -14,17 +15,15 @@ export default function LanguagePage() {
 
       <main className="content" style={{ gap: 20 }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 8, paddingTop: 8 }}>
-          <h1 className="h1">Choose your language</h1>
-          <p className="body">
-            Menus, instructions and alerts will appear in this language. You can change it any time in Settings.
-          </p>
+          <h1 className="h1"><T k="language.title" /></h1>
+          <p className="body"><T k="language.body" /></p>
         </div>
         <LanguagePicker />
       </main>
 
       <div className="foot">
         <Link className="btn" href={routes.onboarding.register}>
-          Continue
+          <T k="common.continue" />
         </Link>
       </div>
     </>
