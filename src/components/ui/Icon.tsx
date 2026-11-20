@@ -81,6 +81,19 @@ const PATHS = {
   bookmark: <path d="M6 3h12v18l-6-4-6 4z" />,
   minus: <path d="M5 12h14" />,
   arrowDown: <path d="M12 5v14M6 13l6 6 6-6" />,
+  copy: (
+    <>
+      <rect x="8" y="8" width="12" height="12" rx="2" />
+      <path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3" />
+    </>
+  ),
+  users: (
+    <>
+      <circle cx="9" cy="8" r="3.5" />
+      <path d="M2.5 20c1-3.5 3.6-5.5 6.5-5.5s5.5 2 6.5 5.5M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2 .6 3.2 2.6 3.5 5.5" />
+    </>
+  ),
+  sparkle: <path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6" />,
   menu: <path d="M4 6h16M4 12h16M4 18h16" />,
   more: (
     <>

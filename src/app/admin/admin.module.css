@@ -1,0 +1,180 @@
+/* Admin console layout.
+   Wide screens (screen 33): dark sidebar + main area with a side column.
+   Phones (screen 34): dark header, slide-out menu and a bottom tab bar. */
+
+.shell {
+  min-height: 100dvh;
+  background: var(--bg);
+  display: flex;
+}
+
+/* ---------- Sidebar (desktop) ---------- */
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--ink);
+  color: #fff;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 10px;
+  color: #c8d3cc;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+.navLink:hover {
+  color: #fff;
+}
+.navLinkActive {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* ---------- Main area ---------- */
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 28px clamp(16px, 3vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+.columns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+}
+.queue {
+  flex: 999 1 560px;
+  min-width: 0;
+  padding: 0;
+}
+.sideColumn {
+  flex: 1 1 300px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  min-width: 720px;
+}
+.table th {
+  text-align: left;
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  padding: 12px 8px;
+}
+.table td {
+  padding: 14px 8px;
+  border-top: 1px solid var(--line);
+  vertical-align: middle;
+}
+.table th:first-child,
+.table td:first-child {
+  padding-left: 18px;
+}
+.table th:last-child,
+.table td:last-child {
+  padding-right: 18px;
+  text-align: right;
+}
+
+/* ---------- Phone-only pieces (hidden on desktop) ---------- */
+.mobileHeader,
+.mobileTabbar,
+.queueCards {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .shell {
+    flex-direction: column;
+    padding-bottom: 78px; /* room for the tab bar */
+  }
+  .sidebar,
+  .desktopHeader,
+  .sideColumn,
+  .queueTable {
+    display: none;
+  }
+  .mobileHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: var(--ink);
+    color: #fff;
+    padding: 16px 20px 18px;
+  }
+  .main {
+    padding: 16px 20px;
+    gap: 14px;
+  }
+  .statGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .queue {
+    background: none;
+    border: 0;
+  }
+  .queueCards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .mobileTabbar {
+    display: grid;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+/* ---------- Slide-out menu (phone) ---------- */
+.drawerBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(14, 27, 20, 0.5);
+  display: flex;
+}
+.drawer {
+  width: 300px;
+  max-width: 85vw;
+  height: 100%;
+  background: var(--ink);
+  color: #fff;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow-y: auto;
+}
+.darkIconButton {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
