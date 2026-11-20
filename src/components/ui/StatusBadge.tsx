@@ -9,7 +9,13 @@ const STATUS_STYLES: Record<ReportStatus, { className: string; label: string }> 
   official: { className: "b-off", label: "Official" },
 };
 
-export function StatusBadge({ status }: { status: ReportStatus }) {
-  const { className, label } = STATUS_STYLES[status];
-  return <span className={`badge ${className}`}>{label}</span>;
+type StatusBadgeProps = {
+  status: ReportStatus;
+  /** Override the text, keeping the colour (e.g. "Saved" in grey). */
+  label?: string;
+};
+
+export function StatusBadge({ status, label }: StatusBadgeProps) {
+  const style = STATUS_STYLES[status];
+  return <span className={`badge ${style.className}`}>{label ?? style.label}</span>;
 }

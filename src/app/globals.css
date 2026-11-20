@@ -548,6 +548,15 @@ textarea.inp {
   color: var(--ink);
   text-decoration: none;
 }
+button.li {
+  width: 100%;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
 .li:last-child {
   border-bottom: 0;
 }

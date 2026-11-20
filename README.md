@@ -22,6 +22,7 @@ npm run icons        # regenerate PWA icons from public/icons/icon.svg
 src/
   app/
     page.tsx              01 Splash
+    onboarding/           02–06 Language, Create account, Verify, Location, Account status
     (main)/               screens with the bottom tab bar
       layout.tsx          screen shell + TabBar
       home/               07 Home dashboard
@@ -56,5 +57,7 @@ public/
 
 ## Placeholders to replace
 
-- `src/lib/sample-data.ts`: all numbers, names and headlines are placeholders.
+- `src/lib/sample-data.ts` and `src/lib/sample-locations.ts`: all numbers, names, places and headlines are placeholders.
+- Onboarding forms only navigate to the next screen for now. Registration, the SMS code, the VIN eligibility check (INEC or another approved service) and the location lookups still need a backend; each page has a `TODO` comment.
+- Terms and Privacy Policy links on the Create account screen point to `#`.
 - `public/icons/icon.svg`: placeholder app icon based on the splash-screen eye mark.
