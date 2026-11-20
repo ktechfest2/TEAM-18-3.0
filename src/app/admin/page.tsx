@@ -8,17 +8,19 @@ import {
   sampleQueue,
 } from "@/lib/sample-admin";
 import styles from "./admin.module.css";
+import { AdminMobileChrome } from "./AdminMobileChrome";
 import { AdminSidebar } from "./AdminSidebar";
 import { ReviewQueue } from "./ReviewQueue";
 
 export const metadata: Metadata = { title: "Admin console" };
 
-// Screen 33 · Admin dashboard (web)
+// Screen 33 · Admin dashboard (web) — and screen 34 on phones (AdminMobileChrome)
 // TODO: restrict to signed-in staff with role-based access (feature doc, section 12).
 export default function AdminPage() {
   return (
     <div className={styles.shell}>
       <AdminSidebar />
+      <AdminMobileChrome />
 
       <main className={styles.main}>
         <header className={styles.desktopHeader} style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 16 }}>
