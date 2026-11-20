@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { StepHeader } from "@/components/layout/StepHeader";
 import { Icon } from "@/components/ui/Icon";
+import { MaskedPhone } from "@/components/profile/ProfileText";
 import { routes } from "@/lib/routes";
 import { CodeInput } from "./CodeInput";
 
@@ -19,7 +20,7 @@ export default function VerifyPage() {
         <div style={{ display: "flex", flexDirection: "column", gap: 6, paddingTop: 4 }}>
           <h1 className="h1">Verify it&apos;s you</h1>
           <p className="body">
-            Enter the 6-digit code sent to <strong style={{ color: "var(--ink)" }}>[your phone number]</strong>.
+            Enter the 6-digit code sent to <strong style={{ color: "var(--ink)" }}><MaskedPhone /></strong>.
           </p>
         </div>
 

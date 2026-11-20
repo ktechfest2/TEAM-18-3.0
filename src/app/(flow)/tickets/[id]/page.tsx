@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { Icon } from "@/components/ui/Icon";
 import { TicketQrCode } from "@/components/ui/TicketQrCode";
+import { MaskedPhone } from "@/components/profile/ProfileText";
 import { routes } from "@/lib/routes";
 import { sampleEvents } from "@/lib/sample-events";
 
@@ -20,7 +21,6 @@ const sampleTicket = {
   eventMeta: "[Day], [date] · [time] · [Venue]",
   holder: "[Ticket holder name]",
   paid: "₦[amount] ([n])",
-  sentTo: "[your phone number]",
 };
 
 // Screen 26 · Ticket & QR
@@ -76,7 +76,7 @@ export default function TicketPage({ params }: PageProps<"/tickets/[id]">) {
         </div>
 
         <p style={{ margin: 0, textAlign: "center", fontSize: 12.5, color: "#CFE3D8" }}>
-          Confirmation sent to {ticket.sentTo}
+          Confirmation sent to <MaskedPhone />
         </p>
       </main>
 

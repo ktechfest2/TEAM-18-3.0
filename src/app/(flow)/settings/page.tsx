@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { TitleHeader } from "@/components/layout/TitleHeader";
 import { Icon } from "@/components/ui/Icon";
 import { routes } from "@/lib/routes";
+import { LogoutButton } from "./LogoutButton";
 import { SettingsForm } from "./SettingsForm";
 
 export const metadata: Metadata = { title: "Settings" };
@@ -29,11 +29,7 @@ export default function SettingsPage() {
           </a>
         </div>
 
-        {/* TODO: sign the user out before returning to the splash screen */}
-        <Link className="btn ghost" href={routes.splash} style={{ color: "var(--red)", marginTop: 4 }}>
-          <Icon name="logout" size="s" />
-          Log out
-        </Link>
+        <LogoutButton />
       </main>
     </>
   );

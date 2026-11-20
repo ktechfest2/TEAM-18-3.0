@@ -1,22 +1,9 @@
 // PLACEHOLDER DATA — for layout only, copied from the design canvas.
 // Replace with live, properly sourced data from the backend.
 
-export const sampleUser = {
-  firstName: "[First name]",
-  area: "[Ward], [State]",
-};
-
 export const sampleElection = {
   name: "[Election name]",
   pollsClose: "[closing time]",
-};
-
-export const sampleMyPollingUnit = {
-  state: "[State]",
-  lga: "[LGA]",
-  ward: "[Ward]",
-  name: "PU [000] · [Polling unit name]",
-  code: "[PU code]",
 };
 
 export const sampleDashboard = {

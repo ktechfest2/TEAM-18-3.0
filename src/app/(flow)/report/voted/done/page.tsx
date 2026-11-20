@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/ui/Icon";
 import { routes } from "@/lib/routes";
-import { sampleMyPollingUnit as pu } from "@/lib/sample-data";
+import { myPollingUnit as pu } from "@/components/profile/my-polling-unit";
 
 export const metadata: Metadata = { title: "Submission received" };
 

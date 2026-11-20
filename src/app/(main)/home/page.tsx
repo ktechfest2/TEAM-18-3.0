@@ -3,7 +3,8 @@ import Link from "next/link";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { routes } from "@/lib/routes";
-import { sampleDashboard as stats, sampleUpdates, sampleUser } from "@/lib/sample-data";
+import { FirstName, ShortArea } from "@/components/profile/ProfileText";
+import { sampleDashboard as stats, sampleUpdates } from "@/lib/sample-data";
 
 export const metadata: Metadata = { title: "Home" };
 
@@ -26,7 +27,7 @@ export default function HomePage() {
           <span style={{ display: "flex", flexDirection: "column" }}>
             <span className="word" style={{ fontSize: 17 }}>EYENEC</span>
             <span className="sm" style={{ fontSize: 11.5 }}>
-              Hi {sampleUser.firstName} · {sampleUser.area}
+              Hi <FirstName /> · <ShortArea />
             </span>
           </span>
         </div>

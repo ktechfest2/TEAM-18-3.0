@@ -1,22 +1,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { FullArea, FullName, Initials, LanguageName, MaskedPhone, PollingUnitName } from "@/components/profile/ProfileText";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { routes } from "@/lib/routes";
 
 export const metadata: Metadata = { title: "Profile" };
 
-// PLACEHOLDER profile — replace with the signed-in user's data.
+// Name, phone, location and language come from the details saved on this phone.
+// PLACEHOLDER plan details — replace with the user's subscription from the API.
 const sampleProfile = {
-  initials: "[AB]",
-  name: "[Full name]",
-  phone: "[your phone number]",
   plan: "[Plan] · ₦[price]/mo",
   renews: "Renews [date]",
 };
 
-const MENU: { href: string; icon: IconName; title: string; detail?: string; tone?: string }[] = [
-  { href: routes.onboarding.location, icon: "pin", title: "Registered location", detail: "PU [000] · [Ward] · [LGA] · [State]" },
-  { href: routes.settings, icon: "globe", title: "Language", detail: "[Chosen language]" },
+const MENU: { href: string; icon: IconName; title: string; detail?: React.ReactNode; tone?: string }[] = [
+  { href: routes.onboarding.location, icon: "pin", title: "Registered location", detail: <><PollingUnitName /> · <FullArea /></> },
+  { href: routes.settings, icon: "globe", title: "Language", detail: <LanguageName /> },
   { href: routes.myReports, icon: "document", title: "My reports", detail: "[0] this election" },
   { href: routes.events.ticket("sample-1-ticket"), icon: "ticket", title: "My tickets", detail: "[0] upcoming" },
   { href: routes.plans, icon: "card", title: "Payment history", detail: "Last paid [date]" },
@@ -58,11 +57,11 @@ export default function ProfilePage() {
               flexShrink: 0,
             }}
           >
-            {profile.initials}
+            <Initials />
           </span>
           <span className="grow" style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-            <span className="h2">{profile.name}</span>
-            <span className="sm">{profile.phone}</span>
+            <span className="h2"><FullName /></span>
+            <span className="sm"><MaskedPhone /></span>
             <span className="row" style={{ gap: 6, flexWrap: "wrap" }}>
               <span className="badge b-ver">Phone verified</span>
               <span className="badge b-rev">Voter check pending</span>

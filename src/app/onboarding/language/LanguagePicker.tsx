@@ -1,12 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { LANGUAGES, type LanguageId } from "@/lib/languages";
+import { LANGUAGES } from "@/lib/languages";
+import { saveUserProfile, useUserProfile } from "@/lib/user-profile";
 
-// TODO: when translations are added, save the choice where the i18n setup reads it
-// (e.g. a cookie) instead of only keeping it in component state.
+// Language choice, saved straight away so the whole app switches language.
 export function LanguagePicker() {
-  const [selected, setSelected] = useState<LanguageId>("en");
+  const { language: selected } = useUserProfile();
 
   return (
     <div role="radiogroup" aria-label="Language" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -19,7 +18,7 @@ export function LanguagePicker() {
             role="radio"
             aria-checked={isSelected}
             className={isSelected ? "opt on" : "opt"}
-            onClick={() => setSelected(language.id)}
+            onClick={() => saveUserProfile({ language: language.id })}
           >
             <span className="tile t-n" style={{ fontWeight: 800, fontSize: 14 }}>
               {language.code}

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { StepHeader } from "@/components/layout/StepHeader";
 import { Icon } from "@/components/ui/Icon";
 import { routes } from "@/lib/routes";
-import { sampleMyPollingUnit as pu } from "@/lib/sample-data";
+import { myPollingUnit as pu } from "@/components/profile/my-polling-unit";
 import { PollingUnitChoice } from "./PollingUnitChoice";
 
 export const metadata: Metadata = { title: "Where did you vote?" };
