@@ -63,6 +63,28 @@ const PATHS = {
     </>
   ),
   upload: <path d="M12 16V4M7 9l5-5 5 5M4 20h16" />,
+  search: (
+    <>
+      <circle cx="11" cy="11" r="7" />
+      <path d="m20 20-3.5-3.5" />
+    </>
+  ),
+  share: (
+    <>
+      <circle cx="6" cy="12" r="2.5" />
+      <circle cx="18" cy="6" r="2.5" />
+      <circle cx="18" cy="18" r="2.5" />
+      <path d="m8.2 10.8 7.6-3.6M8.2 13.2l7.6 3.6" />
+    </>
+  ),
+  sliders: <path d="M4 6h16M7 12h10M10 18h4" />,
+  ticket: <path d="M3 7h18v3a2 2 0 0 0 0 4v3H3v-3a2 2 0 0 0 0-4zM14 7v10" />,
+  card: (
+    <>
+      <rect x="3" y="6" width="18" height="13" rx="2" />
+      <path d="M3 10h18" />
+    </>
+  ),
   video: (
     <>
       <rect x="3" y="6" width="13" height="12" rx="2" />
