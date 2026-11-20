@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { StepHeader } from "@/components/layout/StepHeader";
 import { MaskedPhone } from "@/components/profile/ProfileText";
-import { Icon } from "@/components/ui/Icon";
 import { T } from "@/i18n";
 import { routes } from "@/lib/routes";
 import { CodeInput } from "./CodeInput";
@@ -44,11 +43,6 @@ export default function VerifyPage() {
         </div>
 
         <VoterFields />
-
-        <div className="priv">
-          <Icon name="shieldCheck" size="s" />
-          <span><T k="verify.vinPrivacy" /></span>
-        </div>
       </main>
 
       <div className="foot">
