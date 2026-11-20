@@ -1,0 +1,607 @@
+/* =========================================================
+   EYENEC design system
+   Ported from the "EYENEC" design canvas (shared stylesheet).
+   Class names match the designs so screens can be ported 1:1.
+   ========================================================= */
+
+:root {
+  --bg: #f5f6f2;
+  --ink: #0e1b14;
+  --muted: #56635b;
+  --line: #e2e6e0;
+  --green: #0a6b45;
+  --green-d: #064d31;
+  --green-t: #e4f1ea;
+  --amber: #f2b233;
+  --amber-t: #fdf3dc;
+  --red: #b42318;
+  --red-t: #fdecea;
+  --blue: #1d4ed8;
+  --blue-t: #e8eefd;
+
+  --app-max-width: 480px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #e9ece7;
+  color: var(--ink);
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--green);
+}
+a:hover {
+  color: var(--green-d);
+}
+
+/* ---------- Screen shell ----------
+   The designs are 390×844 phone screens. On real devices the screen
+   fills the viewport; on desktop it is centred at phone width. */
+.scr {
+  width: 100%;
+  max-width: var(--app-max-width);
+  min-height: 100dvh;
+  margin: 0 auto;
+  background: var(--bg);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.top {
+  padding: 18px 20px 12px;
+  padding-top: max(18px, env(safe-area-inset-top));
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.content {
+  flex: 1;
+  padding: 4px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;
+}
+.foot {
+  padding: 12px 20px 24px;
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+  background: var(--bg);
+  position: sticky;
+  bottom: 0;
+}
+
+/* ---------- Icons ---------- */
+.ic {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+.ic.s {
+  width: 18px;
+  height: 18px;
+}
+.ic.l {
+  width: 28px;
+  height: 28px;
+}
+
+/* ---------- Typography ---------- */
+.t-title {
+  font-size: 17px;
+  font-weight: 700;
+  flex: 1;
+  margin: 0;
+}
+.h1 {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0;
+}
+.h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+.h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0;
+}
+.lbl {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 0;
+}
+.body {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0;
+}
+.sm {
+  font-size: 12.5px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.4;
+}
+.n {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 4px 0;
+}
+
+/* ---------- Layout helpers ---------- */
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+.grow {
+  flex: 1;
+  min-width: 0;
+}
+.div {
+  height: 1px;
+  background: var(--line);
+}
+
+/* ---------- Buttons & links ---------- */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  border: 0;
+  font-family: inherit;
+  width: 100%;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.btn:hover {
+  color: #fff;
+}
+.btn.ghost {
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid #cbd2cc;
+}
+.btn.dark {
+  background: var(--ink);
+}
+.btn.sm {
+  height: 40px;
+  font-size: 14px;
+  border-radius: 11px;
+  width: auto;
+  padding: 0 16px;
+}
+.ibtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  text-decoration: none;
+  flex-shrink: 0;
+  position: relative;
+  font: inherit;
+  padding: 0;
+  cursor: pointer;
+}
+.dot {
+  position: absolute;
+  top: 10px;
+  right: 11px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--red);
+  border: 2px solid #fff;
+}
+.link {
+  color: var(--green);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+/* ---------- Forms ---------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field label,
+.flabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.inp {
+  height: 48px;
+  border: 1px solid #c3cbc5;
+  border-radius: 12px;
+  padding: 0 14px;
+  font: inherit;
+  font-size: 16px; /* 16px stops iOS zooming into inputs */
+  background: #fff;
+  color: var(--ink);
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+}
+textarea.inp {
+  height: 110px;
+  padding: 12px 14px;
+  resize: none;
+  line-height: 1.45;
+}
+.sel {
+  position: relative;
+}
+.sel .ic {
+  position: absolute;
+  right: 14px;
+  top: 13px;
+  pointer-events: none;
+  color: var(--muted);
+}
+.hint {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ---------- Chips & status badges ---------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 13px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  white-space: nowrap;
+  text-decoration: none;
+  font-family: inherit;
+}
+.chip.on {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+.chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  flex-shrink: 0;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 24px;
+  padding: 0 9px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+/* Report status colours, used everywhere:
+   Submitted (grey), Under review (amber), Verified (green), Disputed (red), Official (blue) */
+.b-sub {
+  background: #ebeeea;
+  color: #3e4a43;
+}
+.b-rev {
+  background: var(--amber-t);
+  color: #6e4700;
+}
+.b-ver {
+  background: var(--green-t);
+  color: var(--green-d);
+}
+.b-dis {
+  background: var(--red-t);
+  color: var(--red);
+}
+.b-off {
+  background: var(--blue-t);
+  color: #1a43b8;
+}
+
+/* ---------- Bottom tab bar ---------- */
+.tabbar {
+  height: 78px;
+  height: calc(78px + env(safe-area-inset-bottom));
+  background: #fff;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  padding: 6px 4px max(12px, env(safe-area-inset-bottom));
+  flex-shrink: 0;
+  position: sticky;
+  bottom: 0;
+}
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+}
+.tab.on {
+  color: var(--green);
+}
+.fab {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  background: var(--green);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -4px;
+}
+
+/* ---------- Progress ---------- */
+.track {
+  height: 8px;
+  border-radius: 99px;
+  background: #e6eae5;
+  overflow: hidden;
+}
+.fill {
+  height: 100%;
+  background: var(--green);
+  border-radius: 99px;
+}
+.prog {
+  display: flex;
+  gap: 6px;
+}
+.prog i {
+  flex: 1;
+  height: 4px;
+  border-radius: 9px;
+  background: #dce1db;
+}
+.prog i.on {
+  background: var(--green);
+}
+
+/* ---------- Notices ---------- */
+.priv,
+.warn {
+  display: flex;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+.priv {
+  background: var(--green-t);
+  color: var(--green-d);
+}
+.warn {
+  background: var(--amber-t);
+  color: #5c3b00;
+}
+.offline-banner {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  max-width: var(--app-max-width);
+  margin: 0 auto;
+  padding: 8px 16px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* ---------- Selectable options ---------- */
+.opt {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1.5px solid var(--line);
+  text-decoration: none;
+  color: var(--ink);
+  font-family: inherit;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+.opt.on {
+  border-color: var(--green);
+  background: var(--green-t);
+}
+.radio {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #9aa59d;
+  flex-shrink: 0;
+}
+.opt.on .radio {
+  border: 7px solid var(--green);
+  background: #fff;
+}
+
+/* ---------- Tiles, lists, misc ---------- */
+.tile {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.t-g {
+  background: var(--green-t);
+  color: var(--green);
+}
+.t-a {
+  background: var(--amber-t);
+  color: #8a5a00;
+}
+.t-r {
+  background: var(--red-t);
+  color: var(--red);
+}
+.t-b {
+  background: var(--blue-t);
+  color: var(--blue);
+}
+.t-n {
+  background: #ebeeea;
+  color: var(--ink);
+}
+.li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+}
+.li:last-child {
+  border-bottom: 0;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--green);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.word {
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 0.06em;
+}
+.img {
+  background: repeating-linear-gradient(135deg, #e3e8e2 0 10px, #edf0ec 10px 20px);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+.sw {
+  width: 44px;
+  height: 26px;
+  border-radius: 99px;
+  background: #c9d0ca;
+  position: relative;
+  flex-shrink: 0;
+}
+.sw::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+}
+.sw.on {
+  background: var(--green);
+}
+.sw.on::after {
+  left: 21px;
+}

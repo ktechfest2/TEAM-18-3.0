@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Admin dashboard – mobile</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/269c53a3ed7b6aa8189bcf063b15c59c">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}a{color:#0A6B45}a:hover{color:#064D31}</style>
+</helmet>
+<div class="scr">
+<div style="background: #0E1B14; color: #FFFFFF; padding: 16px 20px 18px; display: flex; flex-direction: column; gap: 14px; flex-shrink: 0">
+<div class="row">
+<button class="ibtn" type="button" aria-label="Open menu" onClick="{{openMenu}}" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.18); color: #FFFFFF"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+<div class="grow"><p style="margin: 0; font-size: 11.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #A9B8AF">Admin console</p><p style="margin: 0; font-size: 18px; font-weight: 800">Moderation overview</p></div>
+<button class="ibtn" type="button" aria-label="Search" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.18); color: #FFFFFF"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+</div>
+<div class="row" style="gap: 8px"><span class="badge" style="background: #F2B233; color: #0E1B14">Election day</span><span class="badge" style="background: rgba(255,255,255,0.12); color: #FFFFFF">Senior moderator</span></div>
+</div>
+<div class="content" style="padding-top: 16px; gap: 14px">
+<div class="grid2" style="gap: 10px">
+<div class="card" style="padding: 13px"><p class="sm">Awaiting review</p><p class="n" style="font-size: 22px">1,284</p><p class="sm" style="color: #B42318; font-weight: 700">212 high-impact</p></div>
+<div class="card" style="padding: 13px"><p class="sm">Possible duplicates</p><p class="n" style="font-size: 22px">3,906</p><p class="sm">AI-grouped</p></div>
+<div class="card" style="padding: 13px"><p class="sm">Conflicting PUs</p><p class="n" style="font-size: 22px">148</p><p class="sm" style="color: #6E4700; font-weight: 700">Needs review</p></div>
+<div class="card" style="padding: 13px"><p class="sm">Open incidents</p><p class="n" style="font-size: 22px">96</p><p class="sm">31 escalated</p></div>
+</div>
+<div class="between"><h2 class="h2" style="font-size: 16px">Review queue</h2><a class="link" href="#" style="font-size: 13px">See all</a></div>
+<div class="chips">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="4"><button class="{{f.cls}}" type="button" onClick="{{f.pick}}">{{f.label}}</button></sc-for>
+</div>
+<sc-for list="{{queue}}" as="q" hint-placeholder-count="3">
+<div class="card" style="padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<div class="between"><span class="h3" style="font-size: 14px">{{q.id}}</span><span class="{{q.statusCls}}">{{q.status}}</span></div>
+<div class="row" style="gap: 10px; align-items: flex-start">
+<span class="{{q.tileCls}}" style="width: 36px; height: 36px; border-radius: 10px"><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+<span class="grow"><span style="display: block; font-size: 13.5px; font-weight: 600">{{q.pu}}</span><span class="sm">{{q.meta}}</span></span>
+</div>
+<div class="between" style="padding-top: 10px; border-top: 1px solid #E2E6E0">
+<span class="row" style="gap: 6px"><span class="{{q.flagCls}}">{{q.flag}}</span><span class="sm">{{q.similar}} similar</span></span>
+<button class="btn sm" type="button" style="height: 36px">Review</button>
+</div>
+</div>
+</sc-for>
+<sc-if value="{{showEmpty}}" hint-placeholder-val="{{ false }}">
+<p class="body" style="text-align: center; padding: 20px 0">Nothing in this filter right now.</p>
+</sc-if>
+</div>
+<nav class="tabbar" aria-label="Admin">
+<a class="tab on" href="AdminMobile.dc.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Overview</a>
+<a class="tab" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h5"/></svg>Queue</a>
+<a class="tab" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 20h20zM12 10v4M12 17h.01"/></svg>Incidents</a>
+<a class="tab" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Events</a>
+<button class="tab" type="button" onClick="{{openMenu}}" style="border: 0; background: transparent; font-family: inherit"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg>More</button>
+</nav>
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
+<div style="position: absolute; inset: 0; background: rgba(14,27,20,0.5); display: flex">
+<div style="width: 300px; height: 100%; background: #0E1B14; color: #FFFFFF; padding: 20px 16px; display: flex; flex-direction: column; gap: 18px">
+<div class="row">
+<span class="mark" style="background: #F2B233; color: #0E1B14"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3.2"/></svg></span>
+<span class="word grow" style="font-size: 17px">EYENEC</span>
+<button class="ibtn" type="button" aria-label="Close menu" onClick="{{closeMenu}}" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.18); color: #FFFFFF"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+</div>
+<nav aria-label="Admin sections" style="display: flex; flex-direction: column; gap: 2px; font-size: 14.5px; font-weight: 600">
+<sc-for list="{{nav}}" as="n" hint-placeholder-count="10">
+<a href="#" style="{{n.style}}">{{n.label}}</a>
+</sc-for>
+</nav>
+</div>
+<button type="button" aria-label="Close menu" onClick="{{closeMenu}}" style="flex: 1; border: 0; background: transparent"></button>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const s = this.state || {};
+const filter = s.filter || 'all';
+const all = [
+{ id: 'RES-90412', kind: 'results', pu: 'FC/02/05/004 · Kubwa, Bwari', meta: 'Result · 3:18 PM', status: 'Under review', statusCls: 'badge b-rev', flag: 'Consistent', flagCls: 'badge b-ver', similar: 23, tileCls: 'tile t-b' },
+{ id: 'RES-90377', kind: 'conflicts', pu: 'FC/02/05/007 · Kubwa, Bwari', meta: 'Result · 3:02 PM', status: 'Disputed', statusCls: 'badge b-dis', flag: 'Conflicting figures', flagCls: 'badge b-dis', similar: 9, tileCls: 'tile t-b' },
+{ id: 'INC-3391', kind: 'incidents', pu: 'FC/02/05/007 · Kubwa, Bwari', meta: 'Vote buying · 10:07 AM', status: 'Under review', statusCls: 'badge b-rev', flag: 'Photo attached', flagCls: 'badge b-rev', similar: 4, tileCls: 'tile t-r' }
+];
+const filters = [
+{ id: 'all', label: 'All' },
+{ id: 'results', label: 'Results' },
+{ id: 'incidents', label: 'Incidents' },
+{ id: 'conflicts', label: 'Conflicts' }
+];
+const queue = filter === 'all' ? all : all.filter((q) => q.kind === filter);
+const navItems = ['Overview', 'Report review', 'Duplicates & conflicts', 'Incidents', 'News & alerts', 'Events', 'Users & subscriptions', 'Payments & tickets', 'Analytics', 'Audit log'];
+return {
+filters: filters.map((f) => ({ ...f, cls: f.id === filter ? 'chip on' : 'chip', pick: () => this.setState({ filter: f.id }) })),
+queue,
+showEmpty: queue.length === 0,
+menuOpen: !!s.menu,
+openMenu: () => this.setState({ menu: true }),
+closeMenu: () => this.setState({ menu: false }),
+nav: navItems.map((label, i) => ({
+label,
+style: 'display: flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: 10px; text-decoration: none; ' + (i === 0 ? 'background: rgba(255,255,255,0.1); color: #FFFFFF' : 'color: #C8D3CC')
+}))
+};
+}
+}
+</script>
+</body>
+</html>

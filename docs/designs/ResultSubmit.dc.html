@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Polling unit result</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/269c53a3ed7b6aa8189bcf063b15c59c">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}a{color:#0A6B45}a:hover{color:#064D31}</style>
+</helmet>
+<div class="scr">
+<div class="top">
+<a class="ibtn" href="Report.dc.html" aria-label="Back"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></a>
+<h1 class="t-title">Polling unit result</h1>
+<span class="sm" style="font-weight: 600">1 of 2</span>
+</div>
+<div class="content" style="gap: 14px">
+<a class="card row" href="VoteLocation.dc.html" style="padding: 12px 14px; text-decoration: none; color: #0E1B14">
+<span class="tile t-g" style="width: 38px; height: 38px"><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+<span class="grow"><span class="h3" style="display: block; font-size: 14px">PU 004 · Kubwa Model Pry Sch. I</span><span class="sm">Kubwa · Bwari · FCT</span></span>
+<span class="link" style="font-size: 13px">Change</span>
+</a>
+<div class="field"><label for="win">Party announced as winner</label><div class="sel"><select class="inp" id="win"><option>Party A</option></select><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></div></div>
+<div class="between" style="margin-top: 2px"><p class="flabel">Votes per party</p><span class="hint">As shown on the result sheet</span></div>
+<div class="card" style="padding: 4px 14px">
+<div class="li" style="padding: 8px 0"><label for="pa" class="grow" style="font-size: 14px; font-weight: 600">Party A</label><input class="inp" id="pa" value="142" style="width: 96px; height: 40px; text-align: right; font-weight: 700"></div>
+<div class="li" style="padding: 8px 0"><label for="pb" class="grow" style="font-size: 14px; font-weight: 600">Party B</label><input class="inp" id="pb" value="97" style="width: 96px; height: 40px; text-align: right; font-weight: 700"></div>
+<div class="li" style="padding: 8px 0"><label for="pc" class="grow" style="font-size: 14px; font-weight: 600">Party C</label><input class="inp" id="pc" value="41" style="width: 96px; height: 40px; text-align: right; font-weight: 700"></div>
+<div class="li" style="padding: 8px 0"><label for="pd" class="grow" style="font-size: 14px; font-weight: 600">Party D</label><input class="inp" id="pd" placeholder="0" style="width: 96px; height: 40px; text-align: right; font-weight: 700"></div>
+<a class="link" href="#" style="display: block; padding: 10px 0; font-size: 13px">+ Add party</a>
+</div>
+<div class="grid3" style="gap: 8px">
+<div class="field"><label for="vv" style="font-size: 12px">Valid votes</label><input class="inp" id="vv" value="280" style="height: 44px; font-weight: 700"></div>
+<div class="field"><label for="rj" style="font-size: 12px">Rejected</label><input class="inp" id="rj" value="6" style="height: 44px; font-weight: 700"></div>
+<div class="field"><label for="ac" style="font-size: 12px">Accredited</label><input class="inp" id="ac" value="286" style="height: 44px; font-weight: 700"></div>
+</div>
+<div class="priv" style="padding: 10px 12px"><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg><span>Party votes add up to valid votes (280).</span></div>
+</div>
+<div class="foot">
+<a class="btn" href="ResultEvidence.dc.html">Next: add result sheet photo</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

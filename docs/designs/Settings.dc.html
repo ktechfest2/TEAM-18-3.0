@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Settings</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/269c53a3ed7b6aa8189bcf063b15c59c">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}a{color:#0A6B45}a:hover{color:#064D31}</style>
+</helmet>
+<div class="scr">
+<div class="top">
+<a class="ibtn" href="Profile.dc.html" aria-label="Back"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></a>
+<h1 class="t-title">Settings</h1>
+</div>
+<div class="content" style="gap: 12px">
+<p class="lbl">Language</p>
+<div class="chips" style="flex-wrap: wrap">
+<sc-for list="{{langs}}" as="l" hint-placeholder-count="5"><button class="{{l.cls}}" type="button" onClick="{{l.pick}}">{{l.name}}</button></sc-for>
+</div>
+<p class="lbl" style="margin-top: 6px">Notifications</p>
+<div class="card" style="padding: 2px 14px">
+<sc-for list="{{notifs}}" as="n" hint-placeholder-count="5">
+<div class="li" style="padding: 11px 0">
+<span class="grow"><span class="h3" style="display: block; font-size: 14px">{{n.label}}</span><span class="sm">{{n.sub}}</span></span>
+<button type="button" class="{{n.cls}}" onClick="{{n.toggle}}" aria-label="{{n.aria}}" style="border: 0; padding: 0; cursor: pointer"></button>
+</div>
+</sc-for>
+</div>
+<p class="lbl" style="margin-top: 6px">Privacy &amp; security</p>
+<div class="card" style="padding: 2px 14px">
+<div class="li" style="padding: 11px 0"><span class="grow"><span class="h3" style="display: block; font-size: 14px">App lock</span><span class="sm">Fingerprint or PIN to open</span></span><span class="sw on" role="img" aria-label="On"></span></div>
+<a class="li" href="#" style="padding: 11px 0"><span class="grow h3" style="font-size: 14px">Change password</span><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true" style="color: #56635B"><path d="m9 6 6 6-6 6"/></svg></a>
+<a class="li" href="#" style="padding: 11px 0"><span class="grow h3" style="font-size: 14px">Download or delete my data</span><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true" style="color: #56635B"><path d="m9 6 6 6-6 6"/></svg></a>
+</div>
+<a class="btn ghost" href="Main.dc.html" style="color: #B42318; margin-top: 4px"><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/></svg>Log out</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const s = this.state || {};
+const lang = s.lang || 'English';
+const on = s.on || { alerts: true, reports: true, news: true, events: false, account: true };
+const langs = ['English', 'Pidgin', 'Yorùbá', 'Hausa', 'Igbo'];
+const notifs = [
+{ id: 'alerts', label: 'Election & safety alerts', sub: 'Your polling unit and ward' },
+{ id: 'reports', label: 'My report status', sub: 'Reviews and verification' },
+{ id: 'news', label: 'News & official updates', sub: 'Up to 3 a day' },
+{ id: 'events', label: 'Events & tickets', sub: 'Reminders and confirmations' },
+{ id: 'account', label: 'Subscription & account', sub: 'Billing and security' }
+];
+return {
+langs: langs.map((n) => ({ name: n, cls: n === lang ? 'chip on' : 'chip', pick: () => this.setState({ lang: n }) })),
+notifs: notifs.map((n) => ({
+...n,
+cls: on[n.id] ? 'sw on' : 'sw',
+aria: n.label + (on[n.id] ? ': on' : ': off'),
+toggle: () => this.setState({ on: { ...on, [n.id]: !on[n.id] } })
+}))
+};
+}
+}
+</script>
+</body>
+</html>

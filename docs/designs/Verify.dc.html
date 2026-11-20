@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Verify account</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/269c53a3ed7b6aa8189bcf063b15c59c">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}a{color:#0A6B45}a:hover{color:#064D31}</style>
+</helmet>
+<div class="scr">
+<div class="top">
+<a class="ibtn" href="Register.dc.html" aria-label="Back"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></a>
+<div class="prog" style="flex: 1"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+<span class="sm" style="font-weight: 600">3 of 4</span>
+</div>
+<div class="content" style="gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 6px; padding-top: 4px">
+<h1 class="h1">Verify it's you</h1>
+<p class="body">Enter the 6-digit code sent to <strong style="color: #0E1B14">+234 801 *** 5678</strong>.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px">
+<input class="inp" aria-label="Digit 1" value="4" style="height: 56px; text-align: center; font-size: 22px; font-weight: 700; padding: 0; border-color: #0A6B45">
+<input class="inp" aria-label="Digit 2" value="8" style="height: 56px; text-align: center; font-size: 22px; font-weight: 700; padding: 0; border-color: #0A6B45">
+<input class="inp" aria-label="Digit 3" value="2" style="height: 56px; text-align: center; font-size: 22px; font-weight: 700; padding: 0; border-color: #0A6B45">
+<input class="inp" aria-label="Digit 4" value="0" style="height: 56px; text-align: center; font-size: 22px; font-weight: 700; padding: 0; border-color: #0A6B45">
+<input class="inp" aria-label="Digit 5" value="" style="height: 56px; text-align: center; font-size: 22px; font-weight: 700; padding: 0; border: 2px solid #0E1B14">
+<input class="inp" aria-label="Digit 6" value="" style="height: 56px; text-align: center; font-size: 22px; font-weight: 700; padding: 0">
+</div>
+<p class="sm">Didn't get it? <a href="#" class="link" style="font-size: 12.5px">Resend in 0:42</a></p>
+<div class="div"></div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 class="h2">Voter eligibility</h2>
+<p class="body">We confirm eligibility through an authorised INEC integration or another legally approved verification service.</p>
+</div>
+<div class="field"><label for="vin">Voter Identification Number (VIN)</label><input class="inp" id="vin" placeholder="19-character VIN on your PVC" style="letter-spacing: 0.04em"></div>
+<div class="field"><label for="ln">Last name on voter's card</label><input class="inp" id="ln" placeholder="e.g. Okafor"></div>
+<div class="priv">
+<svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+<span>Your VIN is used only to confirm eligibility. It is encrypted and never shown publicly.</span>
+</div>
+</div>
+<div class="foot">
+<a class="btn" href="Location.dc.html">Verify and continue</a>
+<a class="link" href="Location.dc.html" style="text-align: center; padding: 6px">Skip voter check for now</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

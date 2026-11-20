@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Create event</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/269c53a3ed7b6aa8189bcf063b15c59c">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}a{color:#0A6B45}a:hover{color:#064D31}</style>
+</helmet>
+<div class="scr">
+<div class="top">
+<a class="ibtn" href="Events.dc.html" aria-label="Back"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></a>
+<h1 class="t-title">Create event</h1>
+<span class="badge" style="background: #F2B233; color: #0E1B14">Premium</span>
+</div>
+<div style="padding: 0 20px 12px; flex-shrink: 0">
+<div class="prog"><i class="on"></i><i class="on"></i><i></i></div>
+<div class="between" style="margin-top: 8px; font-size: 12px; font-weight: 600; color: #56635B"><span style="color: #0A6B45">Details</span><span style="color: #0A6B45">Tickets</span><span>Review</span></div>
+</div>
+<div class="content" style="gap: 12px">
+<button type="button" class="img" style="height: 120px; border: 1.5px dashed #AEB7B0; flex-direction: column; gap: 6px; font-family: inherit; width: 100%"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>Upload banner or flyer · 1600×900</button>
+<div class="field"><label for="et">Event title</label><input class="inp" id="et" value="Youth Civic Tech Summit" style="height: 44px"></div>
+<div class="grid2" style="gap: 10px">
+<div class="field"><label for="ec">Category</label><div class="sel"><select class="inp" id="ec" style="height: 44px"><option>Technology</option></select><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true" style="top: 13px"><path d="m6 9 6 6 6-6"/></svg></div></div>
+<div class="field"><label for="ed">Date &amp; time</label><input class="inp" id="ed" value="6 Dec, 10:00" style="height: 44px"></div>
+</div>
+<div class="between" style="margin-top: 4px"><p class="flabel">Ticket types</p><a class="link" href="#" style="font-size: 13px">+ Add type</a></div>
+<div class="card" style="padding: 2px 14px">
+<div class="li" style="padding: 10px 0"><span class="badge b-ver" style="width: 74px; justify-content: center">Early bird</span><span class="grow sm">100 · ends 20 Nov</span><span class="h3" style="font-size: 14px">₦3,000</span></div>
+<div class="li" style="padding: 10px 0"><span class="badge b-sub" style="width: 74px; justify-content: center">Free</span><span class="grow sm">50 · students</span><span class="h3" style="font-size: 14px">₦0</span></div>
+<div class="li" style="padding: 10px 0"><span class="badge b-sub" style="width: 74px; justify-content: center">Regular</span><span class="grow sm">400</span><span class="h3" style="font-size: 14px">₦5,000</span></div>
+<div class="li" style="padding: 10px 0"><span class="badge b-rev" style="width: 74px; justify-content: center">VIP</span><span class="grow sm">60</span><span class="h3" style="font-size: 14px">₦15,000</span></div>
+<div class="li" style="padding: 10px 0"><span class="badge b-off" style="width: 74px; justify-content: center">Premium</span><span class="grow sm">20</span><span class="h3" style="font-size: 14px">₦25,000</span></div>
+</div>
+<div class="card row" style="padding: 12px 14px">
+<span class="grow"><span class="h3" style="display: block; font-size: 14px">Promote after approval</span><span class="sm">Featured placement in Events</span></span>
+<span class="sw" role="img" aria-label="Off"></span>
+</div>
+</div>
+<div class="foot">
+<a class="btn" href="EventAnalytics.dc.html">Submit for review</a>
+<p class="sm" style="text-align: center">Events are moderated before they go live, usually within 24 hours.</p>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Have you voted?</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/269c53a3ed7b6aa8189bcf063b15c59c">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}a{color:#0A6B45}a:hover{color:#064D31}</style>
+</helmet>
+<div class="scr">
+<div class="top">
+<a class="ibtn" href="Report.dc.html" aria-label="Close"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></a>
+<div class="prog" style="flex: 1"><i class="on"></i><i></i><i></i></div>
+<span class="sm" style="font-weight: 600">1 of 3</span>
+</div>
+<div class="content" style="gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 10px; padding-top: 8px">
+<span class="chip" style="align-self: flex-start; height: 30px; font-size: 12px"><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true" style="width: 16px; height: 16px"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>General Election · Presidential &amp; NASS</span>
+<h1 class="h1" style="font-size: 30px">Have you voted in this election?</h1>
+<p class="body">We only record that you took part — never who you voted for.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px">
+<button class="{{yesCls}}" type="button" onClick="{{pickYes}}" style="padding: 20px">
+<span class="tile t-g"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg></span>
+<span class="grow" style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 18px; font-weight: 800">Yes, I voted</span><span class="sm">Next, confirm your polling unit</span></span>
+<span class="radio"></span>
+</button>
+<button class="{{noCls}}" type="button" onClick="{{pickNo}}" style="padding: 20px">
+<span class="tile t-n"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></span>
+<span class="grow" style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 18px; font-weight: 800">No, not yet</span><span class="sm">We'll help you find your polling unit</span></span>
+<span class="radio"></span>
+</button>
+</div>
+<sc-if value="{{isNo}}" hint-placeholder-val="{{ false }}">
+<div class="card" style="display: flex; flex-direction: column; gap: 10px">
+<p class="h3">There's still time</p>
+<p class="body">Polls close at 2:30 PM. If you're in the queue by then, you can still vote.</p>
+<a class="link" href="Location.dc.html">See my polling unit →</a>
+</div>
+</sc-if>
+<div class="priv" style="margin-top: auto">
+<svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+<span>Participation reports are counted anonymously in aggregated statistics. They are not votes and are never treated as results.</span>
+</div>
+</div>
+<div class="foot">
+<a class="btn" href="VoteLocation.dc.html">Continue</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const v = (this.state && this.state.v) || 'yes';
+return {
+yesCls: v === 'yes' ? 'opt on' : 'opt',
+noCls: v === 'no' ? 'opt on' : 'opt',
+isNo: v === 'no',
+pickYes: () => this.setState({ v: 'yes' }),
+pickNo: () => this.setState({ v: 'no' })
+};
+}
+}
+</script>
+</body>
+</html>

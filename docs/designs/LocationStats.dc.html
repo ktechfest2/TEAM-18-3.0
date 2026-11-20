@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Location leaderboard</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/269c53a3ed7b6aa8189bcf063b15c59c">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}a{color:#0A6B45}a:hover{color:#064D31}</style>
+</helmet>
+<div class="scr">
+<div class="top"><h1 class="t-title" style="font-size: 20px">Leaderboard</h1><span class="badge b-ver">Standard</span></div>
+<div style="padding: 0 20px 12px; flex-shrink: 0; display: flex; flex-direction: column; gap: 12px">
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); background: #E6EAE5; border-radius: 12px; padding: 4px">
+<a href="Leaderboard.dc.html" style="height: 38px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: #56635B; text-decoration: none">National</a>
+<a href="LocationStats.dc.html" style="height: 38px; border-radius: 9px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #0E1B14; text-decoration: none">By location</a>
+</div>
+<div class="chips">
+<button class="chip" type="button">FCT<svg class="ic s" viewBox="0 0 24 24" aria-hidden="true" style="width: 14px; height: 14px"><path d="m6 9 6 6 6-6"/></svg></button>
+<button class="chip" type="button">Bwari<svg class="ic s" viewBox="0 0 24 24" aria-hidden="true" style="width: 14px; height: 14px"><path d="m6 9 6 6 6-6"/></svg></button>
+<button class="chip on" type="button">Kubwa<svg class="ic s" viewBox="0 0 24 24" aria-hidden="true" style="width: 14px; height: 14px"><path d="m6 9 6 6 6-6"/></svg></button>
+<button class="chip" type="button">All PUs<svg class="ic s" viewBox="0 0 24 24" aria-hidden="true" style="width: 14px; height: 14px"><path d="m6 9 6 6 6-6"/></svg></button>
+</div>
+</div>
+<div class="content" style="gap: 14px">
+<div class="card" style="display: flex; flex-direction: column; gap: 12px">
+<div class="between"><div><p class="lbl">Ward</p><h2 class="h2">Kubwa, Bwari LGA</h2></div><span class="tile t-g"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span></div>
+<div class="grid3" style="gap: 8px">
+<div><p class="sm">Reports</p><p class="n" style="font-size: 20px">3,870</p></div>
+<div><p class="sm">PUs reporting</p><p class="n" style="font-size: 20px">38/44</p></div>
+<div><p class="sm">Verified PUs</p><p class="n" style="font-size: 20px">17</p></div>
+</div>
+</div>
+<div class="card" style="display: flex; flex-direction: column; gap: 10px">
+<div class="between"><h2 class="h3">Official results</h2><span class="badge b-off">Official · 9 of 44 PUs</span></div>
+<div style="display: grid; grid-template-columns: 62px 1fr 48px; gap: 8px; align-items: center; font-size: 13px"><span style="font-weight: 700">Party A</span><div class="track" style="height: 10px"><div class="fill" style="width: 46%; background: #1D4ED8"></div></div><span style="text-align: right; font-weight: 700">1,206</span></div>
+<div style="display: grid; grid-template-columns: 62px 1fr 48px; gap: 8px; align-items: center; font-size: 13px"><span style="font-weight: 700">Party B</span><div class="track" style="height: 10px"><div class="fill" style="width: 33%; background: #5B7FE0"></div></div><span style="text-align: right; font-weight: 700">864</span></div>
+<div style="display: grid; grid-template-columns: 62px 1fr 48px; gap: 8px; align-items: center; font-size: 13px"><span style="font-weight: 700">Party C</span><div class="track" style="height: 10px"><div class="fill" style="width: 15%; background: #9AB0EE"></div></div><span style="text-align: right; font-weight: 700">392</span></div>
+<p class="sm" style="font-size: 11.5px">Source: official result dataset, published 1:10 PM. Citizen participation reports are not votes and are not shown here.</p>
+</div>
+<div class="between"><h2 class="h3">Compare polling units</h2><a class="link" href="#" style="font-size: 13px">Sort: reports</a></div>
+<div class="card" style="padding: 2px 14px">
+<div class="li"><span class="grow"><span class="h3" style="display: block; font-size: 14px">PU 004 · Model Pry Sch. I</span><span class="sm">214 reports</span></span><span class="badge b-off">Official</span></div>
+<div class="li"><span class="grow"><span class="h3" style="display: block; font-size: 14px">PU 011 · Phase 4 Market</span><span class="sm">188 reports</span></span><span class="badge b-ver">Verified</span></div>
+<div class="li"><span class="grow"><span class="h3" style="display: block; font-size: 14px">PU 007 · Arab Road Junction</span><span class="sm">161 reports</span></span><span class="badge b-dis">Disputed</span></div>
+</div>
+</div>
+<nav class="tabbar" aria-label="Main">
+<a class="tab" href="Home.dc.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Home</a>
+<a class="tab on" href="Leaderboard.dc.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V11M12 20V4M19 20v-6"/></svg>Stats</a>
+<a class="tab" href="Report.dc.html"><span class="fab"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>Report</a>
+<a class="tab" href="News.dc.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h13v14H6a2 2 0 0 1-2-2zM17 9h3v8a2 2 0 0 1-2 2M8 9h5M8 13h5"/></svg>News</a>
+<a class="tab" href="Profile.dc.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>Profile</a>
+</nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

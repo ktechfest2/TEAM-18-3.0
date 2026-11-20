@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Create account</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/269c53a3ed7b6aa8189bcf063b15c59c">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}a{color:#0A6B45}a:hover{color:#064D31}</style>
+</helmet>
+<div class="scr">
+<div class="top">
+<a class="ibtn" href="Language.dc.html" aria-label="Back"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></a>
+<div class="prog" style="flex: 1"><i class="on"></i><i class="on"></i><i></i><i></i></div>
+<span class="sm" style="font-weight: 600">2 of 4</span>
+</div>
+<div class="content" style="gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 6px; padding-top: 4px">
+<h1 class="h1">Create your account</h1>
+<p class="body">Use the details on your voter's card so we can confirm your eligibility.</p>
+</div>
+<div class="field"><label for="fn">Full name</label><input class="inp" id="fn" placeholder="As on your voter's card"></div>
+<div class="field"><label for="ph">Phone number</label>
+<div style="display: flex; gap: 8px"><span class="inp" style="width: 84px; display: flex; align-items: center; font-weight: 600">+234</span><input class="inp" id="ph" placeholder="801 234 5678" style="flex: 1"></div>
+</div>
+<div class="field"><label for="em">Email <span style="color: #56635B; font-weight: 500">(optional)</span></label><input class="inp" id="em" placeholder="you@example.com"></div>
+<div class="grid2">
+<div class="field"><label for="dob">Date of birth</label><input class="inp" id="dob" placeholder="DD / MM / YYYY"></div>
+<div class="field"><label for="gd">Gender</label><div class="sel"><select class="inp" id="gd"><option>Select</option><option>Female</option><option>Male</option><option>Prefer not to say</option></select><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></div></div>
+</div>
+<div class="field"><label for="pw">Create password</label><input class="inp" id="pw" type="password" placeholder="At least 8 characters"></div>
+<label style="display: flex; gap: 10px; align-items: flex-start; font-size: 13px; line-height: 1.45; color: #56635B">
+<input type="checkbox" checked style="width: 20px; height: 20px; margin: 0; accent-color: #0A6B45; flex-shrink: 0">
+<span>I agree to the <a href="#" style="font-weight: 700">Terms</a> and <a href="#" style="font-weight: 700">Privacy Policy</a>. My identity will never be linked to how I vote.</span>
+</label>
+</div>
+<div class="foot">
+<a class="btn" href="Verify.dc.html">Send verification code</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

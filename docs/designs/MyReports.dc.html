@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>My reports</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/269c53a3ed7b6aa8189bcf063b15c59c">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}a{color:#0A6B45}a:hover{color:#064D31}</style>
+</helmet>
+<div class="scr">
+<div class="top">
+<a class="ibtn" href="Report.dc.html" aria-label="Back"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></a>
+<h1 class="t-title">My reports</h1>
+</div>
+<div style="padding: 0 20px 12px; flex-shrink: 0" class="chips">
+<button class="chip on" type="button">All</button><button class="chip" type="button">Results</button><button class="chip" type="button">Incidents</button><button class="chip" type="button">Participation</button>
+</div>
+<div class="content" style="gap: 12px">
+<div class="card" style="display: flex; flex-direction: column; gap: 14px">
+<div class="between"><div><p class="lbl">Result report</p><p class="h3">PU 004 · Kubwa Model Pry Sch. I</p></div><span class="badge b-ver">Verified</span></div>
+<div style="display: flex; flex-direction: column">
+<div style="display: grid; grid-template-columns: 24px 1fr; gap: 10px">
+<div style="display: flex; flex-direction: column; align-items: center"><span style="width: 20px; height: 20px; border-radius: 50%; background: #0A6B45; color: #fff; display: flex; align-items: center; justify-content: center"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width: 12px; height: 12px; stroke-width: 3.5"><path d="m5 12 5 5 9-10"/></svg></span><span style="width: 2px; flex: 1; background: #0A6B45; min-height: 18px"></span></div>
+<div style="padding-bottom: 12px"><p class="h3" style="font-size: 14px">Received</p><p class="sm">Today, 3:18 PM</p></div>
+</div>
+<div style="display: grid; grid-template-columns: 24px 1fr; gap: 10px">
+<div style="display: flex; flex-direction: column; align-items: center"><span style="width: 20px; height: 20px; border-radius: 50%; background: #0A6B45; color: #fff; display: flex; align-items: center; justify-content: center"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" style="width: 12px; height: 12px; stroke-width: 3.5"><path d="m5 12 5 5 9-10"/></svg></span><span style="width: 2px; flex: 1; background: #0A6B45; min-height: 18px"></span></div>
+<div style="padding-bottom: 12px"><p class="h3" style="font-size: 14px">Under review</p><p class="sm">Grouped with 22 similar reports from this PU. Sent to a human moderator.</p></div>
+</div>
+<div style="display: grid; grid-template-columns: 24px 1fr; gap: 10px">
+<div style="display: flex; flex-direction: column; align-items: center"><span style="width: 20px; height: 20px; border-radius: 50%; background: #0A6B45; box-shadow: 0 0 0 4px #E4F1EA"></span><span style="width: 2px; flex: 1; background: #DCE1DB; min-height: 18px"></span></div>
+<div style="padding-bottom: 12px"><p class="h3" style="font-size: 14px">Verified</p><p class="sm">Photo and figures checked · 4:02 PM</p></div>
+</div>
+<div style="display: grid; grid-template-columns: 24px 1fr; gap: 10px">
+<div style="display: flex; flex-direction: column; align-items: center"><span style="width: 20px; height: 20px; border-radius: 50%; border: 2px solid #AEB7B0; background: #fff"></span></div>
+<div><p class="h3" style="font-size: 14px; color: #56635B">Matched to official result</p><p class="sm">Waiting for official dataset</p></div>
+</div>
+</div>
+</div>
+<p class="lbl" style="margin-top: 4px">Earlier</p>
+<div class="card" style="padding: 2px 14px">
+<a class="li" href="IncidentDone.dc.html"><span class="tile t-r" style="width: 38px; height: 38px"><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 20h20zM12 10v4M12 17h.01"/></svg></span><span class="grow"><span class="h3" style="display: block; font-size: 14px">Vote buying · PU 007</span><span class="sm">Today, 10:05 AM</span></span><span class="badge b-rev">Under review</span></a>
+<a class="li" href="VoteDone.dc.html"><span class="tile t-g" style="width: 38px; height: 38px"><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg></span><span class="grow"><span class="h3" style="display: block; font-size: 14px">I voted · PU 004</span><span class="sm">Today, 11:42 AM</span></span><span class="badge b-sub">Received</span></a>
+<a class="li" href="#"><span class="tile t-b" style="width: 38px; height: 38px"><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h7M9 16h5"/></svg></span><span class="grow"><span class="h3" style="display: block; font-size: 14px">Result · PU 011 (by-election)</span><span class="sm">12 Aug 2026</span></span><span class="badge b-dis">Disputed</span></a>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

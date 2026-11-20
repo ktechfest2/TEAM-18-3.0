@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Choose language</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/269c53a3ed7b6aa8189bcf063b15c59c">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}a{color:#0A6B45}a:hover{color:#064D31}</style>
+</helmet>
+<div class="scr">
+<div class="top">
+<a class="ibtn" href="Main.dc.html" aria-label="Back"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></a>
+<div class="prog" style="flex: 1"><i class="on"></i><i></i><i></i><i></i></div>
+<span class="sm" style="font-weight: 600">1 of 4</span>
+</div>
+<div class="content" style="gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 8px">
+<h1 class="h1">Choose your language</h1>
+<p class="body">Menus, instructions and alerts will appear in this language. You can change it any time in Settings.</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 10px">
+<sc-for list="{{langs}}" as="l" hint-placeholder-count="5">
+<button class="{{l.cls}}" type="button" onClick="{{l.pick}}">
+<span class="tile t-n" style="font-weight: 800; font-size: 14px">{{l.code}}</span>
+<span class="grow" style="display: flex; flex-direction: column; gap: 2px">
+<span style="font-size: 16px; font-weight: 700">{{l.name}}</span>
+<span class="sm">{{l.greet}}</span>
+</span>
+<span class="radio"></span>
+</button>
+</sc-for>
+</div>
+</div>
+<div class="foot">
+<a class="btn" href="Register.dc.html">Continue</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const sel = (this.state && this.state.sel) || 'en';
+const list = [
+{ id: 'en', code: 'EN', name: 'English', greet: 'Welcome' },
+{ id: 'pcm', code: 'PG', name: 'Naijá (Pidgin)', greet: 'How far, you don land' },
+{ id: 'yo', code: 'YO', name: 'Yorùbá', greet: 'Ẹ káàbọ̀' },
+{ id: 'ha', code: 'HA', name: 'Hausa', greet: 'Barka da zuwa' },
+{ id: 'ig', code: 'IG', name: 'Igbo', greet: 'Nnọọ' }
+];
+return {
+langs: list.map((l) => ({ ...l, cls: l.id === sel ? 'opt on' : 'opt', pick: () => this.setState({ sel: l.id }) }))
+};
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Get tickets</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/269c53a3ed7b6aa8189bcf063b15c59c">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}a{color:#0A6B45}a:hover{color:#064D31}</style>
+</helmet>
+<div class="scr">
+<div class="top">
+<a class="ibtn" href="EventDetail.dc.html" aria-label="Back"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></a>
+<div class="grow"><h1 class="t-title" style="display: block">Get tickets</h1><p class="sm">Youth Civic Tech Summit · 6 Dec</p></div>
+</div>
+<div class="content" style="gap: 10px">
+<sc-for list="{{tiers}}" as="t" hint-placeholder-count="5">
+<div class="card" style="{{t.cardStyle}}">
+<div class="grow">
+<div class="row" style="gap: 8px"><span class="h3">{{t.name}}</span><sc-if value="{{t.soldOut}}" hint-placeholder-val="{{ false }}"><span class="badge b-sub">Sold out</span></sc-if></div>
+<p class="sm">{{t.note}}</p>
+<p style="margin: 4px 0 0; font-size: 15px; font-weight: 800">{{t.priceLabel}}</p>
+</div>
+<sc-if value="{{t.available}}" hint-placeholder-val="{{ true }}">
+<div class="row" style="gap: 10px">
+<button class="ibtn" type="button" aria-label="Remove one" onClick="{{t.dec}}" style="width: 36px; height: 36px; border-radius: 10px"><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+<span style="width: 18px; text-align: center; font-weight: 800; font-size: 16px">{{t.qty}}</span>
+<button class="ibtn" type="button" aria-label="Add one" onClick="{{t.inc}}" style="width: 36px; height: 36px; border-radius: 10px; background: #0A6B45; color: #FFFFFF; border-color: #0A6B45"><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+</div>
+</sc-if>
+</div>
+</sc-for>
+<p class="flabel" style="margin-top: 6px">Pay with</p>
+<div class="grid3" style="gap: 8px">
+<button class="chip on" type="button" style="height: 44px; justify-content: center; border-radius: 12px">Card</button>
+<button class="chip" type="button" style="height: 44px; justify-content: center; border-radius: 12px">Transfer</button>
+<button class="chip" type="button" style="height: 44px; justify-content: center; border-radius: 12px">USSD</button>
+</div>
+</div>
+<div class="foot" style="border-top: 1px solid #E2E6E0; background: #FFFFFF; padding-top: 14px">
+<div class="between"><span class="sm">{{count}} ticket(s)</span><span style="font-size: 20px; font-weight: 800">{{total}}</span></div>
+<a class="btn" href="Ticket.dc.html">Pay {{total}}</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const q = (this.state && this.state.q) || { free: 0, reg: 2, vip: 0, prem: 0 };
+const tiers = [
+{ id: 'early', name: 'Early bird', note: 'Limited launch price', price: 3000, soldOut: true },
+{ id: 'free', name: 'Free (students)', note: 'Valid student ID at entry', price: 0 },
+{ id: 'reg', name: 'Regular', note: 'Full-day access', price: 5000 },
+{ id: 'vip', name: 'VIP', note: 'Front seating + lunch', price: 15000 },
+{ id: 'prem', name: 'Premium', note: 'VIP + speaker meet-up', price: 25000 }
+];
+const fmt = (n) => (n === 0 ? 'Free' : '₦' + n.toLocaleString('en-NG'));
+const set = (id, d) => {
+const next = { ...q, [id]: Math.max(0, Math.min(10, (q[id] || 0) + d)) };
+this.setState({ q: next });
+};
+let total = 0, count = 0;
+tiers.forEach((t) => { if (!t.soldOut) { total += (q[t.id] || 0) * t.price; count += (q[t.id] || 0); } });
+return {
+tiers: tiers.map((t) => ({
+...t,
+available: !t.soldOut,
+priceLabel: fmt(t.price),
+qty: q[t.id] || 0,
+cardStyle: 'display: flex; align-items: center; gap: 12px; padding: 14px 16px; ' + (t.soldOut ? 'opacity: 0.55' : ((q[t.id] || 0) > 0 ? 'border: 1.5px solid #0A6B45' : '')),
+inc: () => set(t.id, 1),
+dec: () => set(t.id, -1)
+})),
+total: total === 0 ? '₦0' : '₦' + total.toLocaleString('en-NG'),
+count: count
+};
+}
+}
+</script>
+</body>
+</html>

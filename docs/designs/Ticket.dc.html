@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Your ticket</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/269c53a3ed7b6aa8189bcf063b15c59c">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}a{color:#0A6B45}a:hover{color:#064D31}</style>
+</helmet>
+<div class="scr" style="background: #064D31">
+<div class="top">
+<a class="ibtn" href="Events.dc.html" aria-label="Close" style="background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.2); color: #FFFFFF"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></a>
+<h1 class="t-title" style="color: #FFFFFF">Payment successful</h1>
+</div>
+<div class="content" style="gap: 16px; padding-top: 8px">
+<div style="background: #FFFFFF; border-radius: 22px; overflow: hidden">
+<div style="padding: 20px 20px 16px; display: flex; flex-direction: column; gap: 4px">
+<div class="between"><span class="badge b-ver">Regular · 1 of 2</span><span class="sm" style="font-weight: 700">#TKT-48812</span></div>
+<p class="h2" style="margin-top: 8px; font-size: 20px">Youth Civic Tech Summit</p>
+<p class="sm">Sat, 6 Dec · 10:00 AM · Shehu Musa Yar'Adua Centre</p>
+</div>
+<div style="position: relative; height: 0; border-top: 2px dashed #DCE1DB; margin: 0 16px"></div>
+<div style="padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 12px">
+<div role="img" aria-label="Ticket QR code" style="display: grid; grid-template-columns: repeat(21, minmax(0, 1fr)); width: 196px; height: 196px; padding: 10px; background: #FFFFFF; border: 1px solid #E2E6E0; border-radius: 12px">
+<sc-for list="{{cells}}" as="c" hint-placeholder-count="441"><span style="{{c.s}}"></span></sc-for>
+</div>
+<p class="sm" style="text-align: center">Show this code at the entrance. It works offline.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid #E2E6E0">
+<div style="padding: 14px 20px; border-right: 1px solid #E2E6E0"><p class="sm">Ticket holder</p><p class="h3" style="font-size: 14px">Amaka Okafor</p></div>
+<div style="padding: 14px 20px"><p class="sm">Paid</p><p class="h3" style="font-size: 14px">₦10,000 (2)</p></div>
+</div>
+</div>
+<p style="margin: 0; text-align: center; font-size: 12.5px; color: #CFE3D8">Confirmation sent to +234 801 *** 5678</p>
+</div>
+<div class="foot" style="background: transparent">
+<a class="btn" href="#" style="background: #F2B233; color: #0E1B14">Add to wallet</a>
+<a class="btn" href="Notifications.dc.html" style="background: transparent; border: 1px solid rgba(255,255,255,0.35)">View both tickets</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+const n = 21;
+const finder = (r, c) => {
+const inBox = (r0, c0) => r >= r0 && r < r0 + 7 && c >= c0 && c < c0 + 7;
+const boxes = [[0, 0], [0, n - 7], [n - 7, 0]];
+for (const [r0, c0] of boxes) {
+if (inBox(r0, c0)) {
+const rr = r - r0, cc = c - c0;
+const ring = rr === 0 || rr === 6 || cc === 0 || cc === 6;
+const core = rr >= 2 && rr <= 4 && cc >= 2 && cc <= 4;
+return ring || core ? 1 : 0;
+}
+}
+return -1;
+};
+const cells = [];
+for (let r = 0; r < n; r++) {
+for (let c = 0; c < n; c++) {
+let on = finder(r, c);
+if (on === -1) on = ((r * 7 + c * 13 + r * c * 3) % 5) < 2 ? 1 : 0;
+cells.push({ s: on ? 'background: #0E1B14' : 'background: transparent' });
+}
+}
+return { cells };
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Your polling unit</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="/_blob/269c53a3ed7b6aa8189bcf063b15c59c">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}a{color:#0A6B45}a:hover{color:#064D31}</style>
+</helmet>
+<div class="scr">
+<div class="top">
+<a class="ibtn" href="Verify.dc.html" aria-label="Back"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg></a>
+<div class="prog" style="flex: 1"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+<span class="sm" style="font-weight: 600">4 of 4</span>
+</div>
+<div class="content" style="gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 6px; padding-top: 4px">
+<h1 class="h1">Where do you vote?</h1>
+<p class="body">Set your registered polling unit. We'll use it for local stats and alerts.</p>
+</div>
+<button class="btn ghost" type="button" style="height: 48px; font-size: 15px"><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true" style="color: #0A6B45"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Use my current location</button>
+<div class="field"><label for="st">State</label><div class="sel"><select class="inp" id="st"><option>Federal Capital Territory</option></select><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></div></div>
+<div class="field"><label for="lg">Local Government Area</label><div class="sel"><select class="inp" id="lg"><option>Bwari</option></select><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></div></div>
+<div class="field"><label for="wd">Ward</label><div class="sel"><select class="inp" id="wd"><option>Kubwa</option></select><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></div></div>
+<div class="field"><label for="pu">Polling unit</label><div class="sel"><select class="inp" id="pu" style="border: 2px solid #0E1B14"><option>Search polling unit name or code</option></select><svg class="ic s" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></div></div>
+<div class="card" style="padding: 6px 14px">
+<a class="li" href="#"><span class="grow"><span class="h3" style="display: block">PU 004 · Kubwa Model Primary School I</span><span class="sm">FC/02/05/004</span></span><span class="radio" style="border: 7px solid #0A6B45"></span></a>
+<a class="li" href="#"><span class="grow"><span class="h3" style="display: block">PU 005 · Kubwa Model Primary School II</span><span class="sm">FC/02/05/005</span></span><span class="radio"></span></a>
+</div>
+</div>
+<div class="foot">
+<a class="btn" href="Ready.dc.html">Finish setup</a>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>
